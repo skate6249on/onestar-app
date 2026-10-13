@@ -7,7 +7,7 @@ Python 3 (http.server). Mobile-first PWA: class schedule, booking with capacity 
 - Start command: `python server.py`
 
 ## Environment variables
-- `ADMIN_PASSWORD` - admin page password. Set this; the built-in default is not safe.
+- `ADMIN_PASSWORD` - admin page password. Required: if unset, admin endpoints return 503 (disabled). There is no default.
 - `DATABASE_URL` - Postgres connection string (Neon or Supabase free tier). Tables are created on startup.
   If it is not set, the app uses a local SQLite file (onestar.db). On Render that file is wiped on restart or redeploy.
 - `OPENAI_API_KEY` - optional. Without it, the chat answers from the built-in FAQ.

@@ -5,9 +5,9 @@ from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-DB = os.path.join(BASE, "onestar.db")
+DB = os.environ.get("SQLITE_PATH") or ("/tmp/onestar.db" if os.environ.get("VERCEL") else os.path.join(BASE, "onestar.db"))
 PORT = int(os.environ.get("PORT", 8800))
-ADMIN_PW = os.environ.get("ADMIN_PASSWORD", "onestar2026")
+ADMIN_PW = os.environ.get("ADMIN_PASSWORD", "")  # 미설정 시 관리자 기능 비활성화
 LLM_KEY = os.environ.get("OPENAI_API_KEY", "")
 LLM_URL = os.environ.get("LLM_API_URL", "https://api.openai.com/v1/chat/completions")
 LLM_MODEL = os.environ.get("LLM_MODEL", "gpt-4o-mini")
@@ -158,14 +158,19 @@ class H(BaseHTTPRequestHandler):
         n = int(self.headers.get("Content-Length", 0) or 0)
         return json.loads(self.rfile.read(n) or b"{}")
     def admin_ok(self):
-        return self.headers.get("X-Admin-Password") == ADMIN_PW
+        import hmac
+        return bool(ADMIN_PW) and hmac.compare_digest(self.headers.get("X-Admin-Password", "").encode(), ADMIN_PW.encode())
+    def admin_deny(self):
+        if not ADMIN_PW:
+            return self.send({"error": "관리자 기능이 비활성화되어 있어요. 서버에 ADMIN_PASSWORD 환경변수를 설정해 주세요."}, 503)
+        return self.send({"error": "unauthorized"}, 401)
 
     def do_GET(self):
         u = urlparse(self.path); q = parse_qs(u.query)
         if u.path == "/api/classes":
             return self.send(classes_for(q.get("date", [datetime.date.today().isoformat()])[0]))
         if u.path == "/api/admin/week":
-            if not self.admin_ok(): return self.send({"error": "unauthorized"}, 401)
+            if not self.admin_ok(): return self.admin_deny()
             start = datetime.date.fromisoformat(q.get("start", [datetime.date.today().isoformat()])[0])
             out = []
             for i in range(7):
@@ -216,7 +221,7 @@ class H(BaseHTTPRequestHandler):
                 c.rollback(); return self.send({"error": str(e)}, 409)
             finally: c.close()
         if u.path.startswith("/api/admin/"):
-            if not self.admin_ok(): return self.send({"error": "unauthorized"}, 401)
+            if not self.admin_ok(): return self.admin_deny()
             c = db(); act = u.path.split("/")[-1]
             if act == "login": pass
             elif act == "class_update":
