@@ -1,0 +1,135 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>원스타스케이트파크</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0b1020"><link rel="icon" href="/icon-192.png"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap');
+:root{--bg:#0b1020;--card:#141a2e;--line:#252d48;--red:#e3262f;--tx:#f2f4f8;--mu:#8d96ad}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;font-family:"Noto Sans KR",-apple-system,sans-serif;background:var(--bg);color:var(--tx);padding-bottom:84px}
+a{color:#ff6a71}h1,h3{font-family:Anton,"Noto Sans KR",sans-serif;font-weight:400;letter-spacing:.5px}h3{font-size:22px}
+header{background:#05070fe6;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
+.logo{font-family:Anton,sans-serif;font-size:21px;letter-spacing:1px;display:flex;align-items:center;gap:9px}.logo b{color:var(--red);font-weight:400}.logo img{height:36px;width:36px;object-fit:contain;background:#fff;border-radius:9px;padding:3px}
+main{max-width:520px;margin:auto;padding:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:16px;border:1px solid var(--line)}.hero img{width:100%;height:380px;object-fit:cover;object-position:center 30%;display:block}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0b102000 35%,#0b1020f5 96%)}
+.hero div{position:absolute;left:18px;right:18px;bottom:18px;z-index:1}.hero h1{margin:0;font-size:56px;line-height:.95;text-transform:uppercase}.hero h1 em{color:var(--red);font-style:normal}.hero p{margin:10px 0 0;color:#cfd5e3;font-size:14px}
+.badge{display:inline-block;background:var(--red);color:#fff;font-family:"Bebas Neue",sans-serif;font-size:16px;padding:3px 9px 1px;border-radius:4px;margin-bottom:10px;letter-spacing:1.5px}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:15px;font-size:16px;font-weight:900;background:var(--red);color:#fff;text-align:center;text-decoration:none;cursor:pointer;box-shadow:0 8px 20px #e3262f40;font-family:inherit}
+.btn.dark{background:#fff;color:#0b1020;box-shadow:none}.btn.sm{display:inline-block;width:auto;padding:8px 12px;font-size:13px;border-radius:10px;box-shadow:none}
+table{width:100%;border-collapse:collapse}td,th{padding:10px 4px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}th{color:var(--mu);font-weight:400;font-size:12px}td:first-child{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:1px}
+.row{display:flex;gap:10px}.row img{width:50%;height:140px;object-fit:cover;border-radius:16px}
+input,select{width:100%;padding:13px;border:1px solid var(--line);background:#0b1020;color:var(--tx);border-radius:12px;font-size:16px;margin:4px 0 10px;color-scheme:dark}
+label{font-size:13px;color:var(--mu)}.slots{display:grid;gap:8px;margin:8px 0}
+.slot{border:2px solid var(--line);border-radius:14px;padding:13px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#0f1528}
+.slot b{font-family:"Bebas Neue",sans-serif;font-size:22px;letter-spacing:1px;font-weight:400}
+.slot.sel{border-color:var(--red);background:#2a1220}.slot.full{opacity:.4;cursor:not-allowed}.muted{color:var(--mu);font-size:13px}
+.price{display:grid;gap:8px;margin:12px 0}.price div{background:#0b1020;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:12px;padding:11px 13px;font-size:13px;color:var(--mu)}.price b{display:block;color:var(--tx);font-size:16px;margin-bottom:2px}
+nav{position:fixed;bottom:0;left:0;right:0;background:#05070ff0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;z-index:5;padding-bottom:env(safe-area-inset-bottom)}
+nav a{flex:1;text-align:center;padding:10px 0 12px;color:var(--mu);text-decoration:none;font-size:12px}nav a.on{color:#fff;font-weight:900}nav a.on span{transform:scale(1.1)}nav a span{display:block;font-size:20px;transition:.2s}
+.page{display:none;animation:f .25s}.page.on{display:block}@keyframes f{from{opacity:0;transform:translateY(6px)}}
+#chatBtn{position:fixed;right:16px;bottom:90px;width:60px;height:60px;border-radius:50%;background:var(--red);color:#fff;border:0;font-size:26px;box-shadow:0 8px 20px #e3262f66;z-index:6}
+#chat{position:fixed;inset:0;background:var(--bg);z-index:10;display:none;flex-direction:column}#chat.on{display:flex}
+#msgs{flex:1;overflow:auto;padding:14px}.m{max-width:80%;padding:10px 13px;border-radius:16px;margin:6px 0;white-space:pre-wrap;font-size:15px;word-break:break-all}
+.m.b{background:var(--card);border:1px solid var(--line)}.m.u{background:var(--red);color:#fff;margin-left:auto}.chips{display:flex;gap:6px;overflow-x:auto;padding:8px}
+.chips button{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--tx);border-radius:20px;padding:7px 12px;font-family:inherit}
+#chat form{display:flex;gap:6px;padding:8px 8px calc(8px + env(safe-area-inset-bottom))}#chat form input{margin:0}
+.ok{background:#10281b;border-color:#2e7d4f}.tag{font-size:12px;padding:2px 6px;border-radius:6px;background:var(--line)}
+.wk{display:flex;gap:6px;align-items:center;margin-bottom:10px}
+</style></head><body>
+<header><div class="logo"><img src="/logo.png" alt="">ONE STAR <b>SKATE</b></div></header>
+<main>
+<section id="home" class="page">
+ <div class="hero"><img src="/hero.jpg" alt="실내 스케이트보드"><div><span class="badge">★ INDOOR SKATEPARK · ICHEON</span><h1>Ride<br><em>All Year.</em></h1><p>원스타스케이트파크 · 이천 실내 스케이트보드 강습 · 키즈 & 성인</p></div></div>
+ <div class="card"><h3 style="margin-top:0">수업 시간표</h3>
+  <p style="margin:0 0 6px;font-weight:700">평일 <span class="muted">화·수·목·금</span></p>
+  <table><tr><th>시간</th><th>수업</th><th>정원</th></tr><tr><td>15:00</td><td>키즈 그룹</td><td>5명</td></tr><tr><td>17:00</td><td>키즈 그룹</td><td>5명</td></tr><tr><td>19:00</td><td>성인 기초반</td><td>5명</td></tr></table>
+  <div class="price"><div><b>키즈 1회 50,000원</b>예약금 5,000원 + 현장 잔금 45,000원</div><div><b>성인 1회 75,000원</b>예약금 7,500원 + 현장 잔금 67,500원</div></div>
+  <p style="margin:14px 0 6px;font-weight:700">주말반 <span class="muted">토·일</span></p>
+  <table><tr><th>요일</th><th>시간</th><th>수업</th><th>정원</th></tr>
+  <tr><td>토</td><td>15:00</td><td>주말반</td><td>4명</td></tr><tr><td>토</td><td>16:00</td><td>주말반</td><td>4명</td></tr>
+  <tr><td>일</td><td>10:00</td><td>주말반</td><td>4명</td></tr><tr><td>일</td><td>14:00</td><td>주말반</td><td>4명</td></tr></table>
+  <div class="price"><div><b>주말반 1회 60,000원</b>예약금 6,000원 + 현장 잔금 54,000원</div></div>
+  <a class="btn" href="#book">지금 예약하기</a></div>
+ <div class="row" style="margin-bottom:14px"><img src="/onestar_kids_lesson_1.jpg" alt="키즈 수업"><img src="/onestar_adult_lesson.jpg" alt="성인 수업"></div>
+ <div class="card"><h3 style="margin-top:0">오시는 길 · 문의</h3>
+  <p>📍 경기 이천시 신둔면 원적로512번길 103 3동<br>🅿️ 주차 무료<br>📞 <a href="tel:01052636249">010-5263-6249</a><br>📸 <a href="https://instagram.com/onestarskate">@onestarskate</a><br>🏂 겨울 스노보드 강습: 지산리조트</p>
+  <a class="btn dark" href="https://map.naver.com/p/entry/place/33890325">네이버 지도 · 예약</a></div>
+</section>
+
+<section id="book" class="page">
+ <div class="card"><h3 style="margin-top:0">수업 예약</h3>
+  <label>날짜 (화~금 / 토·일)</label><input type="date" id="date">
+  <div id="slots" class="slots"></div>
+  <form id="bf"><label>이름</label><input id="name" required placeholder="홍길동">
+   <label>연락처</label><input id="phone" required inputmode="tel" placeholder="010-0000-0000">
+   <label>수강생 나이</label><input id="age" placeholder="예: 9살 / 성인">
+   <label>인원</label><select id="count"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+   <button class="btn">예약 신청</button></form>
+  <p id="berr" style="color:#c00"></p></div>
+ <div id="done"></div>
+</section>
+
+<section id="admin" class="page">
+ <div class="card" id="login"><h3 style="margin-top:0">관리자 로그인</h3><input type="password" id="pw" placeholder="비밀번호"><button class="btn dark" onclick="adminLogin()">로그인</button></div>
+ <div id="adm" style="display:none">
+  <div class="wk"><button class="btn sm" onclick="shift(-7)">◀ 이전주</button><b id="wklabel" style="flex:1;text-align:center"></b><button class="btn sm" onclick="shift(7)">다음주 ▶</button></div>
+  <div class="card"><b>수업 추가</b><div class="row"><input type="date" id="ad"><input type="time" id="at" value="19:00"></div>
+   <div class="row"><input id="atitle" value="특별 수업"><input type="number" id="acap" value="5" style="width:80px"></div><button class="btn sm" onclick="addClass()">추가</button></div>
+  <div id="week"></div></div>
+</section>
+</main>
+
+<button id="chatBtn" onclick="openChat()" aria-label="상담">💬</button>
+<div id="chat"><header><div class="logo" style="flex:1">AI 상담 <b>★</b></div><button class="btn sm" onclick="closeChat()">닫기</button></header>
+ <div id="msgs"></div><div class="chips"></div>
+ <form onsubmit="send(event)"><input id="cin" placeholder="궁금한 점을 물어보세요" autocomplete="off"><button class="btn sm" style="padding:0 16px">전송</button></form></div>
+
+<nav><a href="#home" data-p="home"><span>🏠</span>홈</a><a href="#book" data-p="book"><span>📅</span>예약</a><a href="#" onclick="openChat();return false"><span>💬</span>상담</a><a href="#admin" data-p="admin"><span>⚙️</span>관리</a></nav>
+<script>
+const $=s=>document.querySelector(s);let sel=null,PW=new URLSearchParams(location.search).get('pw')||localStorage.pw||'',wkStart;
+const api=(u,o={})=>fetch(u,{...o,headers:{'Content-Type':'application/json','X-Admin-Password':PW}}).then(async r=>({ok:r.ok,d:await r.json()}));
+const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+function route(){let h=location.hash.slice(1)||'home';if(h==='chat'){openChat();h='home'}
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===h));document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.p===h));
+ scrollTo(0,0);if(h==='book')loadSlots();if(h==='admin'&&PW)adminLogin(true)}
+addEventListener('hashchange',route);
+function nextClassDay(){let d=new Date();while(![0,2,3,4,5,6].includes(d.getDay()))d.setDate(d.getDate()+1);return iso(d)}
+const _q=new URLSearchParams(location.search);$('#date').value=_q.get('date')||nextClassDay();$('#date').min=iso(new Date());$('#date').onchange=loadSlots;
+async function loadSlots(){sel=null;const {d}=await api('/api/classes?date='+$('#date').value);const el=$('#slots');
+ const live=d.filter(c=>!c.cancelled);if(!live.length){el.innerHTML='<p class="muted">이 날은 수업이 없어요. 화~금 또는 토·일을 선택해 주세요.</p>';return}
+ el.innerHTML=live.map(c=>`<div class="slot ${c.remaining?'':'full'}" data-id="${c.id}" data-r="${c.remaining}" data-dep="${c.deposit||5000}"><div><b>${c.time}</b> ${c.title}<br><span class="muted">${(c.price||50000).toLocaleString()}원 · 예약금 ${(c.deposit||5000).toLocaleString()}원</span></div><div>${c.remaining?`남은 자리 <b>${c.remaining}</b>/${c.capacity}`:'마감'}</div></div>`).join('');
+ const btn=$('#bf .btn'); if(btn) btn.textContent='예약 신청';
+ el.querySelectorAll('.slot').forEach(s=>s.onclick=()=>{if(s.dataset.r==='0')return;el.querySelectorAll('.slot').forEach(x=>x.classList.remove('sel'));s.classList.add('sel');sel=+s.dataset.id;if(btn)btn.textContent=`예약 신청 (예약금 ${(+s.dataset.dep).toLocaleString()}원)`})}
+$('#bf').onsubmit=async e=>{e.preventDefault();$('#berr').textContent='';if(!sel){$('#berr').textContent='시간을 선택해 주세요.';return}
+ const {ok,d}=await api('/api/book',{method:'POST',body:JSON.stringify({class_id:sel,name:$('#name').value,phone:$('#phone').value,age:$('#age').value,count:$('#count').value})});
+ if(!ok){$('#berr').textContent=d.error;loadSlots();return}
+ $('#done').innerHTML=`<div class="card ok"><h3 style="margin-top:0">예약 신청 완료 ✅</h3><p>${d.class.date} ${d.class.time} ${d.class.title}<br>상태: <b>${d.status}</b><br>예약금 ${d.deposit.toLocaleString()}원 · 현장 잔금 ${d.balance.toLocaleString()}원</p>
+ <p class="muted">이 앱은 실제 결제를 받지 않아요. 예약금은 네이버 예약에서 결제하시거나 010-5263-6249로 문의해 주세요.</p><a class="btn" href="${d.naver}">네이버 예약으로 예약금 결제</a></div>`;
+ $('#bf').reset();loadSlots();$('#done').scrollIntoView({behavior:'smooth'})};
+// admin
+async function adminLogin(silent){if(!silent)PW=$('#pw').value;const {ok}=await api('/api/admin/login',{method:'POST',body:'{}'});
+ if(!ok){if(!silent)alert('비밀번호가 틀렸어요');return}localStorage.pw=PW;$('#login').style.display='none';$('#adm').style.display='block';
+ if(!wkStart){const d=new Date();d.setDate(d.getDate()-((d.getDay()+6)%7));wkStart=iso(d)}loadWeek()}
+function shift(n){const d=new Date(wkStart);d.setDate(d.getDate()+n);wkStart=iso(d);loadWeek()}
+async function post(a,b){await api('/api/admin/'+a,{method:'POST',body:JSON.stringify(b)});loadWeek()}
+const DOW='일월화수목금토';
+async function loadWeek(){const {d}=await api('/api/admin/week?start='+wkStart);$('#wklabel').textContent=wkStart+' 주';
+ $('#week').innerHTML=d.filter(x=>x.classes.length).map(x=>`<div class="card"><h3 style="margin:0 0 8px">${x.date} (${DOW[new Date(x.date).getDay()]})</h3>${x.classes.map(c=>`
+ <div style="border-top:1px solid #eee;padding:8px 0;${c.cancelled?'opacity:.5':''}"><b>${c.time} ${c.title}</b> <span class="tag">${c.booked}/${c.capacity}</span>
+  정원 <input type="number" value="${c.capacity}" style="width:60px;padding:4px;margin:0" onchange="post('class_update',{id:${c.id},capacity:this.value})">
+  <button class="btn sm" onclick="post('class_update',{id:${c.id},cancelled:${c.cancelled?0:1}})">${c.cancelled?'복구':'휴강'}</button>
+  ${c.bookings.map(b=>`<div style="font-size:13px;padding:6px 0;${b.cancelled?'text-decoration:line-through;opacity:.5':''}">👤 ${b.name} (${b.count}명, ${b.age||'-'}) ${b.phone} <span class="tag">${b.status}</span><br>
+   <label><input type="checkbox" style="width:auto;margin:0" ${b.deposit_paid?'checked':''} onchange="post('booking_update',{id:${b.id},deposit_paid:+this.checked})"> 예약금</label>
+   <label><input type="checkbox" style="width:auto;margin:0" ${b.balance_paid?'checked':''} onchange="post('booking_update',{id:${b.id},balance_paid:+this.checked})"> 잔금</label>
+   <label><input type="checkbox" style="width:auto;margin:0" ${b.attended?'checked':''} onchange="post('booking_update',{id:${b.id},attended:+this.checked})"> 출석</label>
+   <button class="btn sm" onclick="post('booking_update',{id:${b.id},cancelled:${b.cancelled?0:1}})">${b.cancelled?'복구':'취소'}</button></div>`).join('')}</div>`).join('')}</div>`).join('')||'<p class="muted">이번 주 수업이 없어요.</p>'}
+function addClass(){if(!$('#ad').value)return alert('날짜를 선택하세요');post('class_add',{date:$('#ad').value,time:$('#at').value,title:$('#atitle').value,capacity:$('#acap').value})}
+// chat
+const CH=['수업 시간','주말반','가격','예약금','위치','주차','스노보드','예약하기'];
+$('.chips').innerHTML=CH.map(c=>`<button onclick="ask('${c}')">${c}</button>`).join('');
+function add(t,c){const m=document.createElement('div');m.className='m '+c;m.textContent=t;$('#msgs').append(m);$('#msgs').scrollTop=1e9;return m}
+function openChat(){$('#chat').classList.add('on');if(!$('#msgs').children.length)add('안녕하세요! 원스타스케이트파크 AI 상담이에요 🛹\n수업 시간, 가격, 위치, 예약을 물어보세요.','b')}
+function closeChat(){$('#chat').classList.remove('on')}
+async function ask(t){add(t,'u');const {d}=await api('/api/chat',{method:'POST',body:JSON.stringify({message:t})});const m=add(d.reply,'b');
+ if(/예약/.test(t+d.reply)){const b=document.createElement('a');b.className='btn sm';b.style.marginTop='8px';b.textContent='📅 예약하러 가기';b.href='#book';b.onclick=closeChat;m.append(document.createElement('br'),b)}}
+function send(e){e.preventDefault();const t=$('#cin').value.trim();if(t){ask(t);$('#cin').value=''}}
+if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');
+route();
+</script></body></html>
