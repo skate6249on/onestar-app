@@ -333,14 +333,20 @@ function closeChat(){$('#chat').classList.remove('on')}
 async function ask(t){add(t,'u');const w=add('…','b');const {ok,d}=await api('/api/chat',{method:'POST',body:JSON.stringify({message:t})});w.textContent=ok?d.reply:(d.error||'잠시 후 다시 시도해 주세요.');
  if(ok&&/예약/.test(t+d.reply)){const b=document.createElement('a');b.className='btn sm';b.style.marginTop='8px';b.textContent='📅 예약하러 가기';b.href='#book';b.onclick=closeChat;w.append(document.createElement('br'),b)}}
 function send(e){e.preventDefault();const t=$('#cin').value.trim();if(t){ask(t);$('#cin').value=''}}
-let BLOG=null,BCAT='전체';
-async function loadBlog(){const el=$('#blist');if(!BLOG){const {ok,d}=await api('/api/blog');if(!ok){el.innerHTML=`<div class="alert">${esc(d.error)} <button class="btn sm gray" onclick="loadBlog()">다시 시도</button></div>`;return}BLOG=d}
- const pri=['스케이트보드 강좌','스케이트보드 이벤트 영상'];const cats=['전체',...pri,...BLOG.categories.filter(c=>!pri.includes(c))];
- $('#bchips').innerHTML=cats.map(c=>`<button class="${c===BCAT?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
- $('#bchips').querySelectorAll('button').forEach(b=>b.onclick=()=>{BCAT=b.dataset.c;loadBlog()});
- const ps=BLOG.posts.filter(p=>BCAT==='전체'||p.category===BCAT);
- el.innerHTML=ps.length?ps.map(p=>{const dt=p.pubDate?new Date(p.pubDate):null;const ds=dt&&!isNaN(dt)?`${dt.getFullYear()}.${dt.getMonth()+1}.${dt.getDate()}`:'';
-  return `<a class="card bpost" href="${esc(p.link)}" target="_blank" rel="noopener">${p.image?`<img src="${esc(p.image)}" loading="lazy" referrerpolicy="no-referrer" alt="">`:'<div class="ph">★</div>'}<div><small>${esc(p.category||'')}${ds?' · '+ds:''}</small><b>${esc(p.title)}</b><p>${esc(p.summary||'')}</p></div></a>`}).join(''):'<div class="card muted">이 카테고리의 최근 글이 아직 없어요.</div>'}
+let BLOG=null,BCAT='전체',BCN={},BSHOW=30;
+const BCATS=[[41,'스케이트보드 강좌'],[40,'스케이트보드 이벤트 영상'],[42,'파크제작기'],[43,'로드투 LA28 스케이트보드'],[44,'강준이'],[30,'원스타스케이트'],[29,'체험학습'],[31,'스케이트보드샵']];
+function bdate(p){if(p.date)return p.date.replace(/\.\s*/g,'.').replace(/\.$/,'');const dt=p.pubDate?new Date(p.pubDate):null;return dt&&!isNaN(dt)?`${dt.getFullYear()}.${dt.getMonth()+1}.${dt.getDate()}`:''}
+async function loadBlog(){const el=$('#blist');
+ $('#bchips').innerHTML=[['','전체'],...BCATS].map(([n,c])=>`<button class="${c===BCAT?'on':''}" data-n="${n}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+ $('#bchips').querySelectorAll('button').forEach(b=>b.onclick=()=>{BCAT=b.dataset.c;BSHOW=30;loadBlog()});
+ let ps;const cn=(BCATS.find(x=>x[1]===BCAT)||[])[0];
+ if(!cn){if(!BLOG){el.innerHTML='<div class="card muted">불러오는 중…</div>';const {ok,d}=await api('/api/blog');if(!ok){el.innerHTML=`<div class="alert">${esc(d.error)} <button class="btn sm gray" onclick="loadBlog()">다시 시도</button></div>`;return}BLOG=d}if(BCAT!=='전체')return;ps=BLOG.posts}
+ else{if(!BCN[cn]){el.innerHTML='<div class="card muted">불러오는 중…</div>';const {ok,d}=await api('/api/blog?categoryNo='+cn);if(!ok){el.innerHTML=`<div class="alert">${esc(d.error)} <button class="btn sm gray" onclick="loadBlog()">다시 시도</button></div>`;return}BCN[cn]=d}if(BCAT!==BCATS.find(x=>x[0]===cn)[1])return;ps=BCN[cn].posts}
+ const all=ps.length;ps=ps.slice(0,BSHOW);
+ el.innerHTML=(cn?`<div class="muted" style="margin:0 2px 8px;font-size:13px">총 ${all}개 글</div>`:'')+(ps.length?ps.map(p=>{const ds=bdate(p);
+  return `<a class="card bpost" href="${esc(p.link)}" target="_blank" rel="noopener">${p.image?`<img src="${esc(p.image)}" loading="lazy" referrerpolicy="no-referrer" alt="">`:'<div class="ph">★</div>'}<div><small>${esc(p.category||'')}${ds?' · '+ds:''}</small><b>${esc(p.title)}</b>${p.summary?`<p>${esc(p.summary)}</p>`:''}</div></a>`}).join(''):'<div class="card muted">이 카테고리에 아직 글이 없어요.</div>')
+  +(all>BSHOW?`<button class="btn gray" id="bmore" style="width:100%;margin:6px 0">더보기 (${BSHOW}/${all})</button>`:'');
+ const m=$('#bmore');if(m)m.onclick=()=>{BSHOW+=30;loadBlog()}}
 if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');
 route();
 </script></body></html>
