@@ -551,6 +551,32 @@ def reply(msg):
             pass
     return rule_reply(msg), "faq"
 
+
+# ---------- Naver blog RSS ----------
+BLOG_ID = "skate0"
+_BLOG_CACHE = {"t": 0, "data": None}
+def blog_posts():
+    import time, xml.etree.ElementTree as ET, html as _h
+    if _BLOG_CACHE["data"] and time.time() - _BLOG_CACHE["t"] < 600: return _BLOG_CACHE["data"]
+    req = urllib.request.Request("https://rss.blog.naver.com/%s.xml" % BLOG_ID, headers={"User-Agent": "Mozilla/5.0 (OneStarApp)"})
+    raw = urllib.request.urlopen(req, timeout=8).read()
+    root = ET.fromstring(raw); posts = []; cats = []
+    for it in root.iter("item"):
+        t = lambda k: (it.findtext(k) or "").strip()
+        link = t("link"); desc = t("description")
+        m = re.search(r'<img[^>]+src=["\']([^"\']+)', desc)
+        img = _h.unescape(m.group(1)) if m else ""
+        if img.startswith("http://"): img = "https://" + img[7:]
+        mm = re.search(r"blog\.naver\.com/([^/?]+)/(\d+)", link) or re.search(r"logNo=(\d+)", link)
+        no = mm.groups()[-1] if mm else ""
+        mlink = "https://m.blog.naver.com/%s/%s" % (BLOG_ID, no) if no else link
+        text = re.sub(r"\s+", " ", _h.unescape(re.sub(r"https?://\S+", " ", re.sub(r"<[^>]+>", " ", desc)))).strip()[:90]
+        cat = re.sub(r"\s+", " ", t("category").replace("\xa0", " ")).strip()
+        if cat and cat not in cats: cats.append(cat)
+        posts.append({"title": _h.unescape(t("title")), "link": mlink, "pubDate": t("pubDate"), "category": cat, "image": img, "summary": text})
+    data = {"blog": "https://m.blog.naver.com/%s" % BLOG_ID, "categories": cats, "posts": posts}
+    _BLOG_CACHE.update(t=time.time(), data=data); return data
+
 # ---------- HTTP ----------
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a): pass
@@ -574,6 +600,13 @@ class H(BaseHTTPRequestHandler):
     def do_GET(self):
         u = urlparse(self.path); q = parse_qs(u.query); g = lambda k, dflt="": q.get(k, [dflt])[0]
         try:
+            if u.path == "/api/blog":
+                try: data = blog_posts()
+                except Exception as e: return self.send({"error": "블로그를 불러오지 못했어요.", "detail": type(e).__name__}, 502)
+                b = json.dumps(data, ensure_ascii=False).encode()
+                self.send_response(200); self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=3600")
+                self.send_header("Content-Length", len(b)); self.end_headers(); self.wfile.write(b); return
             if u.path == "/api/classes":
                 return self.send(classes_for(_date(g("date", today()))))
             if u.path.startswith("/api/admin/"):
