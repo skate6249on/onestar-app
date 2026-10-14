@@ -577,6 +577,47 @@ def blog_posts():
     data = {"blog": "https://m.blog.naver.com/%s" % BLOG_ID, "categories": cats, "posts": posts}
     _BLOG_CACHE.update(t=time.time(), data=data); return data
 
+# ---------- Naver blog: full category listing ----------
+BLOG_CATS = [(41,"스케이트보드 강좌"),(40,"스케이트보드 이벤트 영상"),(42,"파크제작기"),(43,"로드투 LA28 스케이트보드"),
+             (44,"강준이"),(30,"원스타스케이트"),(29,"체험학습"),(31,"스케이트보드샵")]
+_CAT_CACHE = {}
+def _cat_page(cno, page):
+    from urllib.parse import unquote_plus
+    url = "https://blog.naver.com/PostTitleListAsync.naver?blogId=%s&categoryNo=%d&currentPage=%d&countPerPage=30" % (BLOG_ID, cno, page)
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (OneStarApp)", "Referer": "https://blog.naver.com/%s" % BLOG_ID})
+    raw = urllib.request.urlopen(req, timeout=8).read().decode("utf-8", "replace")
+    d = json.loads(raw.replace("\\'", "'"))  # Naver emits invalid JSON escape \'
+    if d.get("resultCode") != "S": raise ValueError("naver resultCode %s" % d.get("resultCode"))
+    import html as _h
+    out = [{"logNo": it.get("logNo", ""), "title": _h.unescape(unquote_plus(it.get("title", ""))), "date": it.get("addDate", "")} for it in d.get("postList") or []]
+    return out, int(d.get("totalCount") or 0)
+def blog_category(cno):
+    import time
+    from concurrent.futures import ThreadPoolExecutor
+    c = _CAT_CACHE.get(cno)
+    if c and time.time() - c["t"] < 600: return c["data"]
+    name = dict(BLOG_CATS).get(cno)
+    if not name: raise KeyError(cno)
+    first, total = _cat_page(cno, 1); items = list(first)
+    pages = min((total + 29) // 30, 40)
+    if pages > 1:
+        with ThreadPoolExecutor(8) as ex:
+            for r, _ in ex.map(lambda pg: _cat_page(cno, pg), range(2, pages + 1)): items += r
+    thumbs = {}
+    try:
+        for p in blog_posts()["posts"]:
+            n = p["link"].rsplit("/", 1)[-1]
+            if p.get("image"): thumbs[n] = p["image"]
+    except Exception: pass
+    seen = set(); posts = []
+    for it in items:
+        if not it["logNo"] or it["logNo"] in seen: continue
+        seen.add(it["logNo"])
+        posts.append({"title": it["title"], "link": "https://m.blog.naver.com/%s/%s" % (BLOG_ID, it["logNo"]),
+                      "date": it["date"], "category": name, "image": thumbs.get(it["logNo"], "")})
+    data = {"categoryNo": cno, "category": name, "total": total, "posts": posts}
+    _CAT_CACHE[cno] = {"t": time.time(), "data": data}; return data
+
 # ---------- HTTP ----------
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a): pass
@@ -601,7 +642,11 @@ class H(BaseHTTPRequestHandler):
         u = urlparse(self.path); q = parse_qs(u.query); g = lambda k, dflt="": q.get(k, [dflt])[0]
         try:
             if u.path == "/api/blog":
-                try: data = blog_posts()
+                cn = g("categoryNo")
+                if cn and not (cn.isdigit() and int(cn) in dict(BLOG_CATS)): return self.send({"error": "없는 카테고리예요."}, 404)
+                try:
+                    if cn: data = blog_category(int(cn))
+                    else: data = dict(blog_posts(), categoryList=[{"no": n, "name": nm} for n, nm in BLOG_CATS])
                 except Exception as e: return self.send({"error": "블로그를 불러오지 못했어요.", "detail": type(e).__name__}, 502)
                 b = json.dumps(data, ensure_ascii=False).encode()
                 self.send_response(200); self.send_header("Content-Type", "application/json; charset=utf-8")
