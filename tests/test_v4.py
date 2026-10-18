@@ -158,6 +158,11 @@ try:
     check("재등록 후 목록에서 빠짐", not [x for x in A("renewals")["items"] if x["id"] == sid])
     dash = A("dashboard"); up = [p for p in dash["unpaid_packages"] if p["student_id"] == sid]
     check("할 일: 미납 수강권 남은 금액 100,000원", up and up[0]["due"] == 100000)
+    r11 = A("student_save", {"name": "일대일", "kind": "kids", "phone": "010-5555-0011"}); sid11 = r11.get("id") or r11.get("student_id")
+    A("package_save", {"student_id": sid11, "ptype": "we_kids11", "remaining": 1, "pay_status": "미납"})
+    it11 = [x for x in A("renewals")["items"] if x["id"] == sid11]
+    check("아이 1:1 재등록 문구(월 4회 · 300,000원)", it11 and "아이 1:1 주말 수업(월 4회)" in it11[0]["message"] and "300,000원" in it11[0]["message"], it11)
+    A("student_save", {"id": sid11, "name": "일대일", "kind": "kids", "phone": "010-5555-0011", "active": 0})
 
     print("장부: 수동 매출/지출/순이익")
     A("payment_save", {"product": "보드 판매", "amount": 120000, "method": "카드"})

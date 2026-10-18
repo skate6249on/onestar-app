@@ -555,7 +555,7 @@ def renewals(c):
             expired = all((datetime.date.fromisoformat(p["start_date"]) + datetime.timedelta(days=valid)).isoformat() < t for p in live if p["start_date"])
         if left > 1 and not expired: continue
         lastp = ps[-1]; pt = lastp["ptype"] if lastp["ptype"] in PTYPES else ("wd_adult" if s["kind"] == "adult" else "wd_kids")
-        prod = f"정규수업({PTYPES[pt][0]} 주1회·총4회)"; price = prices.get(pt, PTYPES[pt][1])
+        prod = f"{PTYPES[pt][0]} 수업(월 4회)" if pt.endswith("11") else f"정규수업({PTYPES[pt][0]} 주1회·총4회)"; price = prices.get(pt, PTYPES[pt][1])
         msg = (tpl.replace("{이름}", s["name"]).replace("{잔여}", str(left)).replace("{상품}", prod)
                   .replace("{금액}", f"{price:,}원").replace("\\n", "\n"))
         out.append({"id": s["id"], "name": s["name"], "guardian": s["guardian"], "phone": s["phone"], "kind": s["kind"], "left": left,
