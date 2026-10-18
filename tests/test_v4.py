@@ -40,6 +40,11 @@ try:
     check("1시간 체험 상품 없음", not any("1시간" in n or "60분" in n for n in names))
     check("체험 상품은 40분·30분 3개만", sorted(n for n, p in names.items() if p["cat"] == "체험수업") == ["체험수업 1:1 · 30분", "체험수업 1:2 · 40분", "체험수업 1:3 · 40분"])
     check("정규 주말 성인 350,000원", names["정규 주말 성인 (주1회 · 총4회)"]["price"] == 350000)
+    check("아이 1:1 주중 월 4회 250,000원", names["아이 1:1 수업 주중 (월 4회)"]["price"] == 250000 and names["아이 1:1 수업 주중 (월 4회)"]["cat"] == "정규수업")
+    check("아이 1:1 주말 월 4회 300,000원", names["아이 1:1 수업 주말 (월 4회)"]["price"] == 300000 and names["아이 1:1 수업 주말 (월 4회)"]["cat"] == "정규수업")
+    regs = [p["name"] for p in info["products"] if p["cat"] == "정규수업"]
+    check("정규 순서: 기존 4개 뒤에 아이 1:1 2개", regs == ["정규 주중 키즈 (주1회 · 총4회)", "정규 주중 성인 (주1회 · 총4회)", "정규 주말 키즈 (주1회 · 총4회)", "정규 주말 성인 (주1회 · 총4회)", "아이 1:1 수업 주중 (월 4회)", "아이 1:1 수업 주말 (월 4회)"], regs)
+    check("아이 1:1은 체험 예약 대상 아님", not names["아이 1:1 수업 주중 (월 4회)"]["bookable"] and not names["아이 1:1 수업 주말 (월 4회)"]["bookable"])
     check("스노보드: 지산리조트 + 출장 가능", "지산리조트" in names["겨울철 스노보드 강습"]["descr"] and "출장" in names["겨울철 스노보드 강습"]["descr"])
     _, r = req("/api/chat", {"message": "스노보드 어디서 해요"}); check("챗 스노보드 장소", "지산리조트" in r["reply"] and "출장" in r["reply"])
     check("스노보드·단체 = 문의(가격 없음)", names["겨울철 스노보드 강습"]["price"] is None and names["단체 스케이트보드 수업"]["price"] is None)
@@ -49,6 +54,7 @@ try:
     check("홈에 운영시간/주소/스노보드 장소", "13:00 ~ 21:00" in html and "원적로512번길 103" in html and "지산리조트" in html)
     _, r = req("/api/chat", {"message": "가격 얼마예요"})
     check("챗 FAQ 새 가격(인당)", "1:3 40분 인당 4만원" in r["reply"] and "50,000" not in r["reply"])
+    check("챗 FAQ 아이 1:1 가격", "아이 1:1" in r["reply"] and "주중 25만원" in r["reply"] and "주말 30만원" in r["reply"])
     check("챗 FAQ에 1시간 체험 없음", "1시간" not in r["reply"] and "7만원" not in r["reply"] and "9만원" not in r["reply"])
     check("홈에 1시간 체험 없음", "1시간" not in html and "60분" not in html)
     _, r = req("/api/chat", {"message": "예약금 있나요"}); check("챗 예약금 안내(계좌번호 없음)", "1만원" in r["reply"] and "계좌" not in r["reply"])
@@ -172,6 +178,7 @@ try:
     check("숨김 상품은 공개 목록에서 빠짐", not any(p["id"] == snow["id"] for p in info3["products"]))
     A("product_save", {"id": names["정규 주중 키즈 (주1회 · 총4회)"]["id"], "cat": "정규수업", "name": "정규 주중 키즈 (주1회 · 총4회)", "price": 210000, "ptype": "wd_kids", "sessions": 4, "active": 1})
     meta = A("meta"); check("상품 가격 → 수강권 기본가 연동", [p for p in meta["ptypes"] if p["key"] == "wd_kids"][0]["price"] == 210000)
+    check("수강권 종류에 아이 1:1 주중/주말", {p["key"]: p["price"] for p in meta["ptypes"]}.get("wd_kids11") == 250000 and {p["key"]: p["price"] for p in meta["ptypes"]}.get("we_kids11") == 300000)
 
     print("v3 기능 유지")
     A("holiday_add", {"date": days[1].isoformat(), "reason": "테스트 휴무"})
@@ -189,7 +196,7 @@ if PGURL:
     print("마이그레이션 멱등성(Postgres, 서버 재시작 2회)")
     srv = start(); srv.terminate(); srv.wait(); srv = start()
     try:
-        check("상품 중복 없음", len(A("products")["products"]) == 9)
+        check("상품 중복 없음", len(A("products")["products"]) == 11)
         led = A("ledger?ym=" + datetime.date.today().isoformat()[:7])
         check("수강권 결제 중복 없음", len([p for p in led["payments"] if p["source"] == "package"]) == 2)
     finally:
@@ -200,7 +207,7 @@ srv = start(); srv.terminate(); srv.wait(); srv = start()
 try:
     _, info = req("/api/info")
     c = sqlite3.connect(DBP)
-    check("상품 중복 없음", c.execute("SELECT COUNT(*) FROM products").fetchone()[0] == 9)
+    check("상품 중복 없음", c.execute("SELECT COUNT(*) FROM products").fetchone()[0] == 11)
     check("체험 인당 마이그레이션 1회", c.execute("SELECT COUNT(*) FROM products WHERE code LIKE 'trial%' AND per_person=1").fetchone()[0] == 3)
     check("수강권 결제 중복 이관 없음", c.execute("SELECT COUNT(*) FROM payments WHERE source='package'").fetchone()[0] == 2)
 finally:
@@ -213,11 +220,23 @@ for code, name, price, sort in (("trial_13_60", "체험수업 1:3 · 1시간", 5
     c.execute("INSERT INTO products(code,cat,name,price,per_person,ptype,sessions,descr,sort,active,bookable,updated) VALUES(?,?,?,?,1,'',1,'',?,1,1,'')", (code, "체험수업", name, price, sort))
 pid60 = c.execute("SELECT id FROM products WHERE code='trial_12_60'").fetchone()[0]
 c.execute("INSERT INTO trials(name,phone,count,product_id,pref_date,pref_time,deposit_amount,created) VALUES('기존신청','010-7777-0000',2,?,'2026-11-03','오후',10000,'2026-10-01')", (pid60,))
-c.execute("DELETE FROM settings WHERE k='mig_no_trial_60'"); c.commit(); c.close()
+c.execute("DELETE FROM settings WHERE k='mig_no_trial_60'")
+c.execute("DELETE FROM products WHERE code IN ('reg_wd_kids11','reg_we_kids11')"); c.execute("DELETE FROM settings WHERE k='mig_kids11'")
+c.execute("UPDATE products SET sort=sort+30 WHERE cat<>'체험수업'")  # 옛 DB 정렬값(정규 70~100, 시즌 110~120)
+c.execute("UPDATE products SET price=210000, descr='사장님 수정' WHERE code='reg_wd_kids'")  # 다른 상품 수정값 유지 확인
+before = {r[0]: r[1:] for r in c.execute("SELECT code,name,price,descr,sort,active FROM products WHERE code NOT IN ('trial_13_60','trial_12_60','trial_11_60')")}
+c.commit(); c.close()
 srv = start()
 try:
     pub = req("/api/info")[1]["products"]
     check("기존 DB: 1시간 체험 공개 목록에서 빠짐", not any("1시간" in p["name"] for p in pub))
+    regs = [p["name"] for p in pub if p["cat"] == "정규수업"]
+    check("기존 DB: 아이 1:1 2개 추가(정규 성인 주말 뒤)", regs[-2:] == ["아이 1:1 수업 주중 (월 4회)", "아이 1:1 수업 주말 (월 4회)"] and len(regs) == 6, regs)
+    check("기존 DB: 시즌·단체는 정규 뒤 그대로", [p["cat"] for p in pub][-2:] == ["시즌·단체", "시즌·단체"])
+    c = sqlite3.connect(v4)
+    after = {r[0]: r[1:] for r in c.execute("SELECT code,name,price,descr,sort,active FROM products WHERE code IN (%s)" % ",".join("?" * len(before)), list(before))}
+    check("기존 DB: 다른 상품 행은 그대로(수정값 유지)", after == before)
+    c.close()
     check("기존 DB: 짧은 체험 3개는 그대로", sorted(p["name"] for p in pub if p["cat"] == "체험수업") == ["체험수업 1:1 · 30분", "체험수업 1:2 · 40분", "체험수업 1:3 · 40분"])
     adm = [p for p in A("products")["products"] if p["code"] in ("trial_13_60", "trial_12_60", "trial_11_60")]
     check("기존 DB: 1시간 상품 행은 남고 숨김·예약불가", len(adm) == 3 and all(p["active"] == 0 and p["bookable"] == 0 for p in adm))
@@ -235,6 +254,12 @@ try:
     A("product_save", {"id": pid60, "cat": "체험수업", "name": "체험수업 1:2 · 1시간", "price": 70000, "per_person": 1, "active": 1})
     srv.terminate(); srv.wait(); srv = start()
     check("마이그레이션 1회만(사장님이 다시 켜면 유지)", any(p["id"] == pid60 for p in req("/api/info")[1]["products"]))
+    k11 = [p for p in A("products")["products"] if p["code"] == "reg_we_kids11"][0]
+    A("product_save", {"id": k11["id"], "cat": "정규수업", "name": k11["name"], "price": 300000, "ptype": "we_kids11", "sessions": 4, "active": 0})
+    srv.terminate(); srv.wait(); srv = start()
+    c = sqlite3.connect(v4)
+    check("아이 1:1 추가도 1회만(숨김 유지·중복 없음)", c.execute("SELECT COUNT(*), MAX(active) FROM products WHERE code='reg_we_kids11'").fetchone() == (1, 0))
+    c.close()
 finally:
     srv.terminate(); srv.wait()
 

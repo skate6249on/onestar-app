@@ -34,9 +34,12 @@ DEFAULT_PRODUCTS = [
     ("reg_wd_adult", "정규수업", "정규 주중 성인 (주1회 · 총4회)", 300000, 0, "wd_adult", 4, "장비 포함", 0),
     ("reg_we_kids", "정규수업", "정규 주말 키즈 (주1회 · 총4회)", 250000, 0, "we_kids", 4, "장비 포함", 0),
     ("reg_we_adult", "정규수업", "정규 주말 성인 (주1회 · 총4회)", 350000, 0, "we_adult", 4, "장비 포함", 0),
+    ("reg_wd_kids11", "정규수업", "아이 1:1 수업 주중 (월 4회)", 250000, 0, "wd_kids11", 4, "장비 포함", 0),
+    ("reg_we_kids11", "정규수업", "아이 1:1 수업 주말 (월 4회)", 300000, 0, "we_kids11", 4, "장비 포함", 0),
     ("snow", "시즌·단체", "겨울철 스노보드 강습", None, 0, "", 1, SNOW_DESC, 0),
     ("group", "시즌·단체", "단체 스케이트보드 수업", None, 0, "", 1, "인원·일정에 맞춰 안내해 드려요. 문의 주세요", 0),
 ]
+ADDED_V42 = ("reg_wd_kids11", "reg_we_kids11")  # 2026-10 추가(아이 1:1). 기존 DB에는 한 번만 넣음(정규 성인 주말 바로 뒤)
 RETIRED_PRODUCTS = ("trial_13_60", "trial_12_60", "trial_11_60")  # 판매 중단(1시간 체험)
 PRODUCT_CATS = ["체험수업", "정규수업", "시즌·단체", "용품", "기타"]
 STAGES = ["신규문의", "체험예약", "체험완료", "정규등록", "보류"]
@@ -100,7 +103,8 @@ def now():
 DOW_KO = "월화수목금토일"
 # 정규 수강권(4회)
 PTYPES = {"wd_kids": ("주중 키즈", 200000), "wd_adult": ("주중 성인", 300000),
-          "we_kids": ("주말 키즈", 250000), "we_adult": ("주말 성인", 350000)}
+          "we_kids": ("주말 키즈", 250000), "we_adult": ("주말 성인", 350000),
+          "wd_kids11": ("아이 1:1 주중", 250000), "we_kids11": ("아이 1:1 주말", 300000)}
 PAY_STATUS = ["미납", "일부 납부", "완납"]
 PAY_METHODS = ["현금", "카드", "계좌이체", "스포츠강좌이용권", "이천사랑화폐/제로페이", "기타"]
 
@@ -175,6 +179,7 @@ def init():
     add_column(c, "students", "renew_notice", "TEXT")
     add_column(c, "packages", "created_by_lead", "INTEGER")
     for i, (code, cat, name, price, pp, ptype, ses, desc, bk) in enumerate(DEFAULT_PRODUCTS):
+        if code in ADDED_V42: continue  # 아래 한 번만 단계에서 넣음
         c.execute("INSERT OR IGNORE INTO products(code,cat,name,price,per_person,ptype,sessions,descr,sort,active,bookable,updated) VALUES(?,?,?,?,?,?,?,?,?,1,?,?)",
                   (code, cat, name, price, pp, ptype, ses, desc, (i + 1) * 10, bk, now()))
     # 체험수업 가격은 모두 인당(2026-10 사장님 확인). 기존 DB에 한 번만 적용.
@@ -186,6 +191,14 @@ def init():
         c.execute("UPDATE products SET descr=?, updated=? WHERE code='snow' AND (descr IS NULL OR descr='' OR descr=?)",
                   (SNOW_DESC, now(), "일정과 수강료는 문의 주세요"))
         c.execute("INSERT OR IGNORE INTO settings(k,v) VALUES('mig_snow_desc','1')")
+    # 아이 1:1 수업(주중·주말 월 4회) 추가. 한 번만, 없을 때만 넣고 다른 상품은 건드리지 않음.
+    if not c.execute("SELECT k FROM settings WHERE k='mig_kids11'").fetchone():
+        r = c.execute("SELECT MAX(sort) AS m FROM products WHERE cat='정규수업'").fetchone()
+        base = int(r["m"] if r and r["m"] is not None else 70)
+        for j, (code, cat, name, price, pp, ptype, ses, desc, bk) in enumerate(p for p in DEFAULT_PRODUCTS if p[0] in ADDED_V42):
+            c.execute("INSERT OR IGNORE INTO products(code,cat,name,price,per_person,ptype,sessions,descr,sort,active,bookable,updated) VALUES(?,?,?,?,?,?,?,?,?,1,?,?)",
+                      (code, cat, name, price, pp, ptype, ses, desc, base + j + 1, bk, now()))
+        c.execute("INSERT OR IGNORE INTO settings(k,v) VALUES('mig_kids11','1')")
     # 1시간 체험(1:3·1:2·1:1) 판매 중단(2026-10 사장님 요청). 상품 행·기존 신청/결제 기록은 그대로 두고 숨김만. 한 번만.
     if not c.execute("SELECT k FROM settings WHERE k='mig_no_trial_60'").fetchone():
         c.execute("UPDATE products SET active=0, bookable=0, updated=? WHERE code IN (?,?,?)", (now(),) + RETIRED_PRODUCTS)
@@ -1136,6 +1149,7 @@ def admin_action(c, act, d):
 # ---------- FAQ 자동응답 ----------
 PRICE_TXT = ("[체험수업] 인당 가격 · 강습료·입장료·장비 대여 포함\n• 1:3 40분 인당 4만원\n• 1:2 40분 인당 5만원\n"
              "• 1:1 30분 6만원\n[정규수업] 주 1회 · 총 4회\n• 주중 키즈 20만원 · 주중 성인 30만원\n• 주말 키즈 25만원 · 주말 성인 35만원\n"
+             "[아이 1:1 수업] 월 4회\n• 주중 25만원 · 주말 30만원\n"
              "겨울철 스노보드 강습·단체 수업은 문의해 주세요.")
 HOURS_TXT = "운영 시간: 화~금 13:00~21:00, 토 10:00~18:00, 일 10:00~16:00 (매주 월요일 정기휴무)"
 FAQ = [
