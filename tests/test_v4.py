@@ -57,6 +57,12 @@ try:
     check("챗 FAQ 아이 1:1 가격", "아이 1:1" in r["reply"] and "주중 25만원" in r["reply"] and "주말 30만원" in r["reply"])
     check("챗 FAQ에 1시간 체험 없음", "1시간" not in r["reply"] and "7만원" not in r["reply"] and "9만원" not in r["reply"])
     check("홈에 1시간 체험 없음", "1시간" not in html and "60분" not in html)
+    EV = "⚡ 테슬라 NACS 충전포트 무료 충전 가능 🔌🚗"
+    check("홈 수강료 카드에 충전 배지", 'id="evb"' in html and EV in html and html.index('id="plist"') < html.index('id="evb"') < html.index("이런 곳이에요"))
+    for q in ("테슬라 충전 돼요?", "전기차 충전 가능한가요", "NACS 있어요?", "EV charging?"):
+        _, r = req("/api/chat", {"message": q}); check(f"챗 충전 고정 답변: {q}", r["reply"] == EV + "\n자세한 건 문의 주세요", r)
+    _, r = req("/api/chat", {"message": "주차 돼요?"}); check("충전 아닌 질문엔 충전 문구 없음", "NACS" not in r["reply"] and "무료 주차" in r["reply"])
+    _, r = req("/api/chat", {"message": "가격 얼마예요"}); check("가격 답변엔 충전 문구 없음", "NACS" not in r["reply"])
     _, r = req("/api/chat", {"message": "예약금 있나요"}); check("챗 예약금 안내(계좌번호 없음)", "1만원" in r["reply"] and "계좌" not in r["reply"])
 
     print("관리자 인증")

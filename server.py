@@ -1147,6 +1147,9 @@ def admin_action(c, act, d):
     raise NotFound()
 
 # ---------- FAQ 자동응답 ----------
+EV_TXT = "⚡ 테슬라 NACS 충전포트 무료 충전 가능 🔌🚗"
+EV_RE = r"충전|테슬라|tesla|nacs|전기차|전기 ?자동차|\bev\b|차저|charg"
+EV_REPLY = EV_TXT + "\n자세한 건 문의 주세요"  # 충전 질문엔 이 두 줄만(시간·kW·대상 등 지어내지 않음)
 PRICE_TXT = ("[체험수업] 인당 가격 · 강습료·입장료·장비 대여 포함\n• 1:3 40분 인당 4만원\n• 1:2 40분 인당 5만원\n"
              "• 1:1 30분 6만원\n[정규수업] 주 1회 · 총 4회\n• 주중 키즈 20만원 · 주중 성인 30만원\n• 주말 키즈 25만원 · 주말 성인 35만원\n"
              "[아이 1:1 수업] 월 4회\n• 주중 25만원 · 주말 30만원\n"
@@ -1176,16 +1179,19 @@ FACTS = f"""원스타스케이트(파크) 정보(이것 외의 정보는 절대 
 - 체험수업 시간은 문의 후 확정.
 - 겨울철 스노보드 강습: 지산리조트에서 진행, 원하는 리조트로 출장 가능. 수강료·일정은 문의.
 - 주소: {ADDRESS} 3동, 무료 주차
+- 전기차 충전: "{EV_TXT}" 이 문장만 사실. 충전 시간·속도(kW)·이용 대상·제휴 등은 말하지 말 것. 충전 질문엔 정확히 "{EV_REPLY.replace(chr(10), ' ')}"라고만 답할 것.
 - 전화: {PHONE}, 인스타그램 @onestarskate, 네이버 예약: {NAVER}
 모르는 내용은 "{PHONE}로 전화 주세요"라고 답하라. 예약을 원하면 앱의 '예약' 메뉴를 안내하라. 한국어로 짧게 답하라."""
 
 def rule_reply(msg):
+    if re.search(EV_RE, msg, re.I): return EV_REPLY
     hits = [a for p, a in FAQ if re.search(p, msg, re.I)]
     if hits:
         return "\n\n".join(dict.fromkeys(hits[:2]))
     return f"정확한 답변을 드리기 어려운 내용이에요. {PHONE}로 전화 주시면 친절히 안내해 드릴게요."
 
 def reply(msg):
+    if re.search(EV_RE, msg, re.I): return EV_REPLY, "faq"  # 충전 질문은 고정 답변(LLM도 거치지 않음)
     if LLM_KEY:
         try:
             body = json.dumps({"model": LLM_MODEL, "messages": [{"role": "system", "content": FACTS}, {"role": "user", "content": msg}], "temperature": 0.2}).encode()

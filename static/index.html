@@ -116,6 +116,12 @@ a{color:var(--gold)}.stat.hot b,.left.low{color:#ff4d4d}.today{border-color:#E0A
 .msgbox{white-space:pre-wrap;background:var(--bg);border:1px dashed #3a3a3a;border-radius:12px;padding:10px;font-size:14px;margin:8px 0}
 .rep{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:var(--g)}.rep .stat{text-align:left;padding:12px}.rep .stat b{font-size:32px}.rep .stat small{display:block;color:var(--mu);font-size:11px}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.evb{position:relative;display:flex;align-items:center;gap:10px;margin:12px 0 0;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,#0d1a12 0%,#0a0f1a 100%);border:1px solid transparent;background-clip:padding-box;box-shadow:0 0 0 1px #2fbf7155,0 0 18px #2fbf7126 inset}
+.evb::before{content:"";position:absolute;inset:-1px;border-radius:15px;padding:1px;background:linear-gradient(90deg,#2fbf71,#E0A030,#2fbf71);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.evb .bolt{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;background:radial-gradient(circle,#2fbf7140,#2fbf7110);animation:evp 2.4s ease-in-out infinite}
+.evb b{font-size:15px;line-height:1.35;color:#eafff2;letter-spacing:.2px}
+@keyframes evp{0%,100%{box-shadow:0 0 0 0 #2fbf7155}50%{box-shadow:0 0 0 7px #2fbf7100}}
+@media (prefers-reduced-motion:reduce){.evb .bolt{animation:none}}
 </style></head><body>
 <header><div class="logo"><img class="brand" src="/logo_header.jpg" alt="ONESTAR SKATEBOARDING"></div></header>
 <main>
@@ -123,6 +129,7 @@ a{color:var(--gold)}.stat.hot b,.left.low{color:#ff4d4d}.today{border-color:#E0A
  <div class="hero"><img src="/hero_park.jpg" alt="원스타 실내 스케이트파크" onerror="this.onerror=null;this.src='/hero_ollie.jpg'"><div><span class="badge">★ INDOOR SKATEPARK · ICHEON</span><h1 class="osh" aria-label="ALL DAY ONESTAR"><span class="l1">ALL DAY</span><span class="l2"><b>ONEST</b><svg class="st" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF1B8"/><stop offset=".3" stop-color="#F6CF5E"/><stop offset=".55" stop-color="#E0A030"/><stop offset=".78" stop-color="#A86E12"/><stop offset="1" stop-color="#F2C24E"/></linearGradient></defs><polygon points="50,2 63,37 99,38 70,60 81,96 50,74 19,96 30,60 1,38 37,37" fill="url(#sg)" stroke="#C98A1E" stroke-width="2" stroke-linejoin="round"/></svg><b>R</b></span></h1><p>원스타스케이트파크 · 이천 실내 스케이트보드 강습 · 키즈 & 성인</p></div></div>
  <div class="quick"><a class="btn" href="#book">📅 체험 신청</a><a class="btn dark" href="#ask">✉️ 문의 남기기</a><a class="btn ghost full" href="tel:01052636249">📞 전화 010-5263-6249</a></div>
  <div class="card"><h3>수업 · 수강료</h3><div id="plist"><div class="skel"></div><div class="skel"></div></div>
+  <div class="evb" id="evb" role="note"><span class="bolt" aria-hidden="true">🔋</span><b>⚡ 테슬라 NACS 충전포트 무료 충전 가능 🔌🚗</b></div>
   <p class="muted" style="margin:10px 0 0">체험수업은 인당 가격이고, 강습료·입장료·장비 대여가 포함된 유료 수업이에요. 예약금 <span id="depTxt">1만원</span>은 총액에서 빠지고 나머지는 현장에서 결제해요. 시간은 문의 후 확정돼요.</p></div>
  <div class="card"><h3>이런 곳이에요</h3><div class="facts"><div><b>🧒 나이 제한 없음</b>아이부터 어른까지 수준별로</div><div><b>🛹 장비 포함</b>빈손으로 오셔도 돼요 · 구매도 가능</div>
   <div><b>🏠 실내 파크</b>비 와도 수업해요</div><div><b>👥 단체 수업</b>학교·기관·모임 문의</div><div style="grid-column:1/-1"><b>🏂 겨울철 스노보드 강습</b>지산리조트 · 원하는 리조트로 출장 가능</div></div></div>
