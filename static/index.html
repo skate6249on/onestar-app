@@ -119,7 +119,7 @@ a{color:var(--gold)}.stat.hot b,.left.low{color:#ff4d4d}.today{border-color:#E0A
 .evb{position:relative;display:flex;align-items:center;gap:10px;margin:12px 0 0;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,#0d1a12 0%,#0a0f1a 100%);border:1px solid transparent;background-clip:padding-box;box-shadow:0 0 0 1px #2fbf7155,0 0 18px #2fbf7126 inset}
 .evb::before{content:"";position:absolute;inset:-1px;border-radius:15px;padding:1px;background:linear-gradient(90deg,#2fbf71,#E0A030,#2fbf71);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .evb .bolt{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;background:radial-gradient(circle,#2fbf7140,#2fbf7110);animation:evp 2.4s ease-in-out infinite}
-.evb b{font-size:15px;line-height:1.35;color:#eafff2;letter-spacing:.2px}
+.evb b{font-size:15px;line-height:1.4;color:#eafff2;letter-spacing:.2px;word-break:keep-all;text-wrap:balance}
 @keyframes evp{0%,100%{box-shadow:0 0 0 0 #2fbf7155}50%{box-shadow:0 0 0 7px #2fbf7100}}
 @media (prefers-reduced-motion:reduce){.evb .bolt{animation:none}}
 </style></head><body>
