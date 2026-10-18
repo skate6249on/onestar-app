@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>원스타스케이트파크</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#000000"><link rel="icon" href="/icon-192.png"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>원스타스케이트파크 · 이천 실내 스케이트보드 강습</title><meta name="description" content="이천 신둔면 실내 스케이트보드 파크. 키즈·성인 체험수업, 정규수업, 단체 수업, 겨울철 스노보드 강습. 장비 포함, 나이 제한 없음."><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#000000"><link rel="icon" href="/icon-192.png"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@1,900&display=swap');
 :root{--bg:#000;--card:#111;--card2:#0a0a0a;--line:#2a2a2a;--red:#D81E1E;--gold:#E0A030;--tx:#fff;--mu:#a8a8a8;--ok:#2fbf71;--warn:#f5a524;--r:16px;--g:12px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{-webkit-text-size-adjust:100%}body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--tx);padding-bottom:calc(84px + env(safe-area-inset-bottom));line-height:1.5}
@@ -98,38 +98,73 @@ a{color:var(--gold)}.stat.hot b,.left.low{color:#ff4d4d}.today{border-color:#E0A
 .hero h1.osh .l1{font-size:46px}.hero h1.osh .l2{font-size:62px}
 .hero h1.osh .l2{display:flex;align-items:center;width:max-content}.hero h1.osh .st{width:.78em;height:.78em;margin:0 .01em 0 .02em;transform:skewX(-8deg) translateY(-.03em);flex:none}
 .bpost{display:flex;gap:12px;text-decoration:none;color:var(--tx);padding:12px;align-items:center}.bpost img,.bpost .ph{width:84px;height:84px;border-radius:12px;object-fit:cover;flex:none;background:#1a1a1a}.bpost .ph{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:28px}.bpost b{display:block;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.bpost small{color:var(--gold);font-size:11px;font-weight:700}.bpost p{margin:4px 0 0;color:var(--mu);font-size:12px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+/* v4 */
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:var(--g)}.quick .btn{padding:16px 8px;font-size:17px}.quick .full{grid-column:1/-1}
+.plist{display:grid;gap:8px}.pi{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:11px 13px}
+.pi b{display:block;font-size:15px}.pi .muted{font-size:12px}.pi .pr{font-weight:900;white-space:nowrap;text-align:right;font-size:15px}.pi .pr small{display:block;font-weight:400;color:var(--mu);font-size:11px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0}.facts div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13px}.facts b{display:block;font-size:15px}
+.hours td{font-size:15px;padding:7px 4px}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:0 -14px var(--g);padding:6px 14px;position:sticky;top:calc(64px + env(safe-area-inset-top));z-index:4;background:#000000f0;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--mu);border-radius:14px;padding:10px 13px;font-family:inherit;font-size:15px;font-weight:800}.tabs button.on{background:var(--gold);color:#000;border-color:var(--gold)}
+.tabs button i{font-style:normal;background:#ff4d4d;color:#fff;border-radius:999px;font-size:11px;padding:1px 6px;margin-left:4px}
+.todo{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.todo:last-child{border-bottom:0}.todo .info{flex:1;min-width:0}
+.lead{padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:8px;cursor:pointer}.lead .top2{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.stage-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:var(--g)}.stage-bar button{border:1px solid var(--line);background:var(--card);color:var(--mu);border-radius:12px;padding:8px 2px;font-family:inherit;font-size:12px;font-weight:700;line-height:1.2}.stage-bar button b{display:block;font-size:20px;color:var(--tx)}.stage-bar button.on{border-color:var(--gold);background:#1f1606;color:#fff}
+.bigbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.bigbtns .btn{padding:13px 6px;font-size:15px}
+.money{font-family:"Bebas Neue",sans-serif;font-size:34px;letter-spacing:1px;line-height:1}.money.neg{color:#ff6a71}.money.pos{color:var(--ok)}
+.hbar{display:flex;align-items:flex-end;gap:6px;height:90px;margin-top:8px}.hbar div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:10px;color:var(--mu)}.hbar i{display:block;width:100%;background:var(--gold);border-radius:6px 6px 0 0;min-height:2px}
+.msgbox{white-space:pre-wrap;background:var(--bg);border:1px dashed #3a3a3a;border-radius:12px;padding:10px;font-size:14px;margin:8px 0}
+.rep{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:var(--g)}.rep .stat{text-align:left;padding:12px}.rep .stat b{font-size:32px}.rep .stat small{display:block;color:var(--mu);font-size:11px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 </style></head><body>
 <header><div class="logo"><img class="brand" src="/logo_header.jpg" alt="ONESTAR SKATEBOARDING"></div></header>
 <main>
 <section id="home" class="page">
  <div class="hero"><img src="/hero_park.jpg" alt="원스타 실내 스케이트파크" onerror="this.onerror=null;this.src='/hero_ollie.jpg'"><div><span class="badge">★ INDOOR SKATEPARK · ICHEON</span><h1 class="osh" aria-label="ALL DAY ONESTAR"><span class="l1">ALL DAY</span><span class="l2"><b>ONEST</b><svg class="st" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF1B8"/><stop offset=".3" stop-color="#F6CF5E"/><stop offset=".55" stop-color="#E0A030"/><stop offset=".78" stop-color="#A86E12"/><stop offset="1" stop-color="#F2C24E"/></linearGradient></defs><polygon points="50,2 63,37 99,38 70,60 81,96 50,74 19,96 30,60 1,38 37,37" fill="url(#sg)" stroke="#C98A1E" stroke-width="2" stroke-linejoin="round"/></svg><b>R</b></span></h1><p>원스타스케이트파크 · 이천 실내 스케이트보드 강습 · 키즈 & 성인</p></div></div>
- <div class="card"><h3>수업 시간표</h3>
-  <p style="margin:0 0 4px;font-weight:700">평일 <span class="muted">화·수·목·금</span></p>
-  <table><tr><th>시간</th><th>수업</th><th>정원</th></tr><tr><td class="t">15:00</td><td>키즈 그룹</td><td>5명</td></tr><tr><td class="t">17:00</td><td>키즈 그룹</td><td>5명</td></tr><tr><td class="t">19:00</td><td>성인 기초반</td><td>5명</td></tr></table>
-  <div class="price"><div><b>키즈 1회 50,000원</b>예약금 5,000원 + 현장 잔금 45,000원</div><div><b>성인 1회 75,000원</b>예약금 7,500원 + 현장 잔금 67,500원</div></div>
-  <p style="margin:16px 0 4px;font-weight:700">주말반 <span class="muted">토·일</span></p>
-  <table><tr><th>요일</th><th>시간</th><th>수업</th><th>정원</th></tr>
-  <tr><td>토</td><td class="t">15:00</td><td>주말반</td><td>4명</td></tr><tr><td>토</td><td class="t">16:00</td><td>주말반</td><td>4명</td></tr>
-  <tr><td>일</td><td class="t">10:00</td><td>주말반</td><td>4명</td></tr><tr><td>일</td><td class="t">14:00</td><td>주말반</td><td>4명</td></tr></table>
-  <div class="price"><div><b>주말반 1회 60,000원</b>예약금 6,000원 + 현장 잔금 54,000원</div></div>
-  <a class="btn" href="#book">지금 예약하기</a></div>
+ <div class="quick"><a class="btn" href="#book">📅 체험 신청</a><a class="btn dark" href="#ask">✉️ 문의 남기기</a><a class="btn ghost full" href="tel:01052636249">📞 전화 010-5263-6249</a></div>
+ <div class="card"><h3>수업 · 수강료</h3><div id="plist"><div class="skel"></div><div class="skel"></div></div>
+  <p class="muted" style="margin:10px 0 0">체험수업은 인당 가격이고, 강습료·입장료·장비 대여가 포함된 유료 수업이에요. 예약금 <span id="depTxt">1만원</span>은 총액에서 빠지고 나머지는 현장에서 결제해요. 시간은 문의 후 확정돼요.</p></div>
+ <div class="card"><h3>이런 곳이에요</h3><div class="facts"><div><b>🧒 나이 제한 없음</b>아이부터 어른까지 수준별로</div><div><b>🛹 장비 포함</b>빈손으로 오셔도 돼요 · 구매도 가능</div>
+  <div><b>🏠 실내 파크</b>비 와도 수업해요</div><div><b>👥 단체 수업</b>학교·기관·모임 문의</div><div style="grid-column:1/-1"><b>🏂 겨울철 스노보드 강습</b>지산리조트 · 원하는 리조트로 출장 가능</div></div></div>
  <div class="pics"><img src="/onestar_kids_lesson_1.jpg" alt="키즈 수업" loading="lazy"><img src="/onestar_adult_lesson.jpg" alt="성인 수업" loading="lazy"></div>
+ <div class="card"><h3>운영 시간</h3><table class="hours"><tr><td>화~금</td><td><b>13:00 ~ 21:00</b></td></tr><tr><td>토</td><td><b>10:00 ~ 18:00</b></td></tr><tr><td>일</td><td><b>10:00 ~ 16:00</b></td></tr><tr><td>월</td><td><span class="tag red">정기휴무</span></td></tr></table>
+  <p class="muted" style="margin:8px 0 0">수업 시간은 원하시는 시간에 맞춰 잡아 드려요.</p></div>
  <div class="card"><h3>오시는 길 · 문의</h3>
-  <p style="margin-top:0">📍 경기 이천시 신둔면 원적로512번길 103 3동<br>🅿️ 주차 무료<br>📞 <a href="tel:01052636249">010-5263-6249</a><br>📸 <a href="https://instagram.com/onestarskate">@onestarskate</a><br>🏂 겨울 스노보드 강습: 지산리조트</p>
-  <a class="btn dark" href="https://map.naver.com/p/entry/place/33890325">네이버 지도 · 예약</a></div>
+  <p style="margin-top:0">📍 경기도 이천시 신둔면 원적로512번길 103 3동<br><span class="muted">(지번 도봉리 621-3)</span><br>🅿️ 무료 주차<br>📞 <a href="tel:01052636249">010-5263-6249</a><br>📸 인스타그램 <a href="https://instagram.com/onestarskate">@onestarskate</a><br>📝 블로그 <a href="https://m.blog.naver.com/skate0">skate0</a><br>🏂 겨울철 스노보드 강습: 지산리조트 <span class="muted">(원하는 리조트로 출장 가능 · 문의)</span></p>
+  <div class="row"><a class="btn dark" href="https://map.naver.com/p/entry/place/33890325">네이버 지도 · 예약</a></div></div>
 </section>
 
 <section id="book" class="page">
- <div class="card"><h3>수업 예약</h3>
-  <label>날짜 (화~금 / 토·일)</label><input type="date" id="date">
-  <div id="slots" class="slots"></div>
-  <form id="bf"><label>이름</label><input id="name" required placeholder="홍길동" autocomplete="name">
+ <div class="card"><h3>체험수업 신청</h3>
+  <div class="alert" style="background:#1f1606;border-color:#E0A03066;color:#ffd98a">🕐 <b>시간은 문의 후 확정</b>돼요. 희망 날짜와 시간대를 남겨 주시면 전화로 시간을 정해 드려요.</div>
+  <form id="bf"><label>수업 종류</label><select id="bprod"></select><p id="bpinfo" class="muted" style="margin:-6px 0 12px"></p>
+   <label>인원</label><select id="count"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+   <label>희망 날짜 (월요일 휴무)</label><input type="date" id="date"><p id="dinfo" class="muted" style="margin:-6px 0 12px"></p>
+   <label>희망 시간대</label><select id="tpref"></select><input id="tfree" placeholder="직접 적기 (선택) 예: 3시 이후" style="margin-top:0">
+   <div class="price" id="bsum"></div>
+   <label>이름</label><input id="name" required placeholder="홍길동" autocomplete="name">
    <label>연락처</label><input id="phone" required inputmode="tel" placeholder="010-0000-0000" autocomplete="tel">
    <label>수강생 나이</label><input id="age" placeholder="예: 9살 / 성인">
-   <label>인원</label><select id="count"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+   <label>어떻게 알게 되셨나요?</label><select id="bsrc"></select>
+   <label>남기실 말 (선택)</label><input id="bmsg" placeholder="예: 처음 타 봐요">
+   <input class="hp" id="bweb" tabindex="-1" autocomplete="off" aria-hidden="true">
    <p id="berr" class="err"></p>
-   <button class="btn" id="bbtn">예약 신청</button></form></div>
+   <button class="btn" id="bbtn">체험 신청하기</button></form></div>
  <div id="done"></div>
+</section>
+
+<section id="ask" class="page">
+ <div class="card"><h3>문의 남기기</h3>
+  <p class="muted" style="margin-top:0">남겨 주시면 확인 후 연락드려요. 급하시면 <a href="tel:01052636249">010-5263-6249</a>로 전화 주세요.</p>
+  <form id="qf"><label>이름</label><input id="qname" required placeholder="홍길동" autocomplete="name">
+   <label>연락처</label><input id="qphone" required inputmode="tel" placeholder="010-0000-0000" autocomplete="tel">
+   <label>관심 수업</label><select id="qprod"></select>
+   <div class="row"><div><label>인원</label><input id="qpeople" type="number" min="1" value="1" inputmode="numeric"></div><div><label>희망 날짜/시간</label><input id="qpref" placeholder="예: 토요일 오후"></div></div>
+   <label>어떻게 알게 되셨나요?</label><select id="qsrc"></select>
+   <label>문의 내용</label><textarea id="qmsg" style="min-height:90px" placeholder="예: 초등학생 2명 체험 가능할까요?"></textarea>
+   <input class="hp" id="qweb" tabindex="-1" autocomplete="off" aria-hidden="true">
+   <p id="qerr" class="err"></p><button class="btn" id="qbtn">문의 보내기</button></form></div>
+ <div id="qdone"></div>
 </section>
 
 <section id="blog" class="page">
@@ -141,7 +176,7 @@ a{color:var(--gold)}.stat.hot b,.left.low{color:#ff4d4d}.today{border-color:#E0A
 <section id="admin" class="page">
  <div class="card" id="login"><h3>관리자 로그인</h3><form onsubmit="adminLogin();return false"><input type="password" id="pw" placeholder="비밀번호" autocomplete="current-password"><p id="lerr" class="err"></p><button class="btn" id="lbtn">로그인</button></form></div>
  <div id="adm" style="display:none">
-  <div class="seg" id="atabs"><button data-t="dash" class="on">대시보드</button><button data-t="sched">스케줄</button><button data-t="stu">수강생</button></div>
+  <div class="tabs" id="atabs"><button data-t="dash" class="on">✅ 할 일</button><button data-t="lead">📥 문의</button><button data-t="trial">🙋 체험</button><button data-t="sched">📆 스케줄</button><button data-t="stu">👥 수강생</button><button data-t="renew">🔁 재등록</button><button data-t="money">💰 장부</button><button data-t="report">📊 리포트</button><button data-t="prod">🏷️ 상품</button></div>
   <div id="av"></div>
   <p style="text-align:center;margin-top:20px"><button class="btn sm ghost" onclick="logout()">로그아웃</button></p>
  </div>
@@ -155,7 +190,7 @@ a{color:var(--gold)}.stat.hot b,.left.low{color:#ff4d4d}.today{border-color:#E0A
 <div id="sheet"><div class="bd" onclick="closeSheet()"></div><div class="pn"><div class="grab"></div><div id="sh"></div></div></div>
 <div id="toast"></div>
 
-<nav><a href="#home" data-p="home"><span>🏠</span>홈</a><a href="#book" data-p="book"><span>📅</span>예약</a><a href="#blog" data-p="blog"><span>📰</span>블로그</a><a href="#" onclick="openChat();return false"><span>💬</span>상담</a><a href="#admin" data-p="admin"><span>⚙️</span>관리</a></nav>
+<nav><a href="#home" data-p="home"><span>🏠</span>홈</a><a href="#book" data-p="book"><span>📅</span>체험신청</a><a href="#ask" data-p="ask"><span>✉️</span>문의</a><a href="#blog" data-p="blog"><span>📰</span>블로그</a><a href="#admin" data-p="admin"><span>⚙️</span>관리</a></nav>
 <script>
 const $=s=>document.querySelector(s);let sel=null,PW=localStorage.pw||'',wkStart;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -168,23 +203,40 @@ const DOW='일월화수목금토';const md=s=>{const d=pd(s);return `${d.getMont
 function toast(t,bad){const e=$('#toast');e.textContent=t;e.className=bad?'err':'';e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',bad?3500:1800)}
 function route(){let h=location.hash.slice(1)||'home';if(h==='chat'){openChat();h='home'}
  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===h));document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.p===h));
- document.body.classList.toggle('adm',h==='admin');scrollTo(0,0);requestAnimationFrame(()=>scrollTo(0,0));if(h==='book')loadSlots();if(h==='blog')loadBlog();if(h==='admin'&&PW&&$('#adm').style.display==='none')adminLogin(true)}
+ document.body.classList.toggle('adm',h==='admin');scrollTo(0,0);requestAnimationFrame(()=>scrollTo(0,0));loadInfo();if(h==='blog')loadBlog();if(h==='admin'&&PW&&$('#adm').style.display==='none')adminLogin(true)}
 addEventListener('hashchange',route);if('scrollRestoration' in history)history.scrollRestoration='manual';addEventListener('load',()=>setTimeout(()=>scrollTo(0,0),0));
 document.querySelectorAll('nav a[data-p]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const h='#'+a.dataset.p;if(location.hash!==h)history.pushState(null,'',h);route()}));
-function nextClassDay(){let d=new Date();while(![0,2,3,4,5,6].includes(d.getDay()))d.setDate(d.getDate()+1);return iso(d)}
-const _q=new URLSearchParams(location.search);$('#date').value=_q.get('date')||nextClassDay();$('#date').min=iso(new Date());$('#date').onchange=loadSlots;
-async function loadSlots(){sel=null;const el=$('#slots'),btn=$('#bbtn');btn.textContent='예약 신청';el.innerHTML='<div class="skel"></div><div class="skel"></div>';
- const {ok,d}=await api('/api/classes?date='+$('#date').value);if(!ok){el.innerHTML=`<div class="alert">${esc(d.error)} <button class="btn sm gray" onclick="loadSlots()">다시 시도</button></div>`;return}
- const live=d.filter(c=>!c.cancelled);if(!live.length){el.innerHTML=`<p class="empty">${d.some(c=>c.holiday)?'🛑 이 날은 휴무일이에요.':'이 날은 수업이 없어요.<br>화~금 또는 토·일을 선택해 주세요.'}</p>`;return}
- el.innerHTML=live.map(c=>`<div class="slot ${c.remaining?'':'full'}" data-id="${c.id}" data-r="${c.remaining}" data-dep="${c.deposit}"><div><b>${c.time}</b> ${esc(c.title)}<br><span class="muted">${won(c.price)} · 예약금 ${won(c.deposit)}</span></div><div style="text-align:right">${c.remaining?`<span class="muted">남은 자리</span><br><b>${c.remaining}</b><span class="muted">/${c.capacity}</span>`:'<span class="tag red">마감</span>'}</div></div>`).join('');
- el.querySelectorAll('.slot').forEach(s=>s.onclick=()=>{if(s.dataset.r==='0')return;el.querySelectorAll('.slot').forEach(x=>x.classList.remove('sel'));s.classList.add('sel');sel=+s.dataset.id;btn.textContent=`예약 신청 (예약금 ${won(s.dataset.dep)})`;$('#berr').textContent=''})}
-$('#bf').onsubmit=async e=>{e.preventDefault();$('#berr').textContent='';if(!sel){$('#berr').textContent='시간을 선택해 주세요.';return}
- const b=$('#bbtn'),t=b.textContent;b.disabled=true;b.innerHTML='<span class="spin"></span> 예약 중…';
- const {ok,d}=await api('/api/book',{method:'POST',body:JSON.stringify({class_id:sel,name:$('#name').value,phone:$('#phone').value,age:$('#age').value,count:$('#count').value})});
- b.disabled=false;b.textContent=t;if(!ok){$('#berr').textContent=d.error;loadSlots();return}
- $('#done').innerHTML=`<div class="card ok"><h3>예약 신청 완료 ✅</h3><p style="margin-top:0">${md(d.class.date)} ${d.class.time} ${esc(d.class.title)}<br>상태: <b>${d.status}</b><br>예약금 ${won(d.deposit)} · 현장 잔금 ${won(d.balance)}</p>
- <p class="muted">이 앱은 실제 결제를 받지 않아요. 예약금은 네이버 예약에서 결제하시거나 010-5263-6249로 문의해 주세요.</p><a class="btn" href="${d.naver}">네이버 예약으로 예약금 결제</a></div>`;
- $('#bf').reset();loadSlots();$('#done').scrollIntoView({behavior:'smooth'})};
+let INFO=null;
+const priceTxt=p=>p.price==null?'문의':(p.per_person?'인당 ':'')+won(p.price);
+async function loadInfo(){if(INFO)return;const {ok,d}=await api('/api/info');if(!ok){$('#plist').innerHTML=`<div class="alert">${esc(d.error)}</div>`;return}INFO=d;
+ const cats=[...new Set(d.products.map(p=>p.cat))];
+ $('#plist').innerHTML=cats.map(c=>`<h4 style="margin:12px 0 8px">${esc(c)}</h4><div class="plist">${d.products.filter(p=>p.cat===c).map(p=>`<div class="pi"><div><b>${esc(p.name)}</b>${p.descr?`<span class="muted">${esc(p.descr)}</span>`:''}</div><div class="pr">${priceTxt(p)}</div></div>`).join('')}</div>`).join('');
+ const bk=d.products.filter(p=>p.bookable),src=d.sources.map(x=>`<option>${esc(x)}</option>`).join('');
+ $('#bprod').innerHTML=bk.map(p=>`<option value="${p.id}">${esc(p.name)} · ${priceTxt(p)}</option>`).join('')+'<option value="">잘 모르겠어요 (상담 후 결정)</option>';
+ $('#qprod').innerHTML='<option value="">선택 안 함</option>'+d.products.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('');
+ $('#bsrc').innerHTML=src;$('#qsrc').innerHTML=src;$('#depTxt').textContent=won(d.deposit);
+ const sp=()=>{const p=bk.find(x=>x.id==$('#bprod').value);$('#bpinfo').textContent=p?(p.descr||'')+(p.per_person?' · 인원수만큼 계산돼요':''):'통화로 상담 후 정해 드려요.';bsum()};$('#bprod').onchange=sp;$('#count').onchange=bsum;$('#date').onchange=dpref;dpref();sp()}
+function dpref(){const v=$('#date').value,el=$('#tpref');if(!v||!INFO){el.innerHTML='';return}const wd=(pd(v).getDay()+6)%7;const r=INFO.open_range[String(wd)];
+ const hol=INFO.holidays.includes(v);$('#dinfo').textContent=wd===0?'🛑 월요일은 정기휴무예요. 다른 날짜를 골라 주세요.':hol?'🛑 그날은 휴무일이에요.':`운영시간 ${r[0]}~${r[1]}`;$('#dinfo').style.color=(wd===0||hol)?'#ff8a90':'';
+ el.innerHTML=(INFO.time_prefs[String(wd)]||[]).map(x=>`<option>${esc(x)}</option>`).join('');el.disabled=wd===0||hol}
+function bsum(){if(!INFO)return;const p=INFO.products.find(x=>x.id==$('#bprod').value),n=+$('#count').value||1,dep=INFO.deposit;
+ const tot=p&&p.price!=null?(p.per_person?p.price*n:p.price):null;
+ $('#bsum').innerHTML=tot!=null?`<div><b>예상 금액 ${won(tot)}</b>${p.per_person?`인당 ${won(p.price)} × ${n}명`:''}</div>${dep?`<div><b>예약금 ${won(dep)}</b>예약이 확정되면 예약금 안내를 드려요 (총액에서 차감)</div><div><b>현장 결제 ${won(Math.max(0,tot-dep))}</b>체험 당일 현장에서 결제</div>`:''}`
+  :`<div><b>금액은 상담 후 안내</b>${dep?`예약금 ${won(dep)}은 예약이 확정되면 안내해 드려요`:''}</div>`}
+function nextClassDay(){let d=new Date();d.setDate(d.getDate()+1);while(d.getDay()===1)d.setDate(d.getDate()+1);return iso(d)}
+const _q=new URLSearchParams(location.search);$('#date').value=_q.get('date')||nextClassDay();$('#date').min=iso(new Date());
+$('#qf').onsubmit=async e=>{e.preventDefault();$('#qerr').textContent='';const b=$('#qbtn');b.disabled=true;b.innerHTML='<span class="spin"></span> 보내는 중…';
+ const {ok,d}=await api('/api/inquiry',{method:'POST',body:JSON.stringify({name:$('#qname').value,phone:$('#qphone').value,product_id:$('#qprod').value||null,people:$('#qpeople').value,preferred:$('#qpref').value,source:$('#qsrc').value,message:$('#qmsg').value,website:$('#qweb').value})});
+ b.disabled=false;b.textContent='문의 보내기';if(!ok){$('#qerr').textContent=d.error;return}
+ $('#qdone').innerHTML=`<div class="card ok"><h3>문의 접수 완료 ✅</h3><p style="margin-top:0">확인 후 연락드릴게요. 급하시면 <a href="tel:01052636249">010-5263-6249</a>로 전화 주세요.</p></div>`;$('#qf').reset();$('#qdone').scrollIntoView({behavior:'smooth'})};
+$('#bf').onsubmit=async e=>{e.preventDefault();$('#berr').textContent='';
+ const tp=[$('#tpref').value,$('#tfree').value.trim()].filter(Boolean).join(' / ');
+ const b=$('#bbtn');b.disabled=true;b.innerHTML='<span class="spin"></span> 보내는 중…';
+ const {ok,d}=await api('/api/trial',{method:'POST',body:JSON.stringify({date:$('#date').value,time_pref:tp,name:$('#name').value,phone:$('#phone').value,age:$('#age').value,count:$('#count').value,product_id:$('#bprod').value||null,source:$('#bsrc').value,message:$('#bmsg').value,website:$('#bweb').value})});
+ b.disabled=false;b.textContent='체험 신청하기';if(!ok){$('#berr').textContent=d.error;return}
+ $('#done').innerHTML=`<div class="card ok"><h3>체험 신청 완료 ✅</h3><p style="margin-top:0">희망: ${md(d.date)} · ${esc(d.time_pref)} · ${d.count}명<br>${d.product?esc(d.product):'수업 종류는 상담 후 결정'}${d.total!=null?`<br>예상 금액 <b>${won(d.total)}</b>${d.deposit?` (예약금 ${won(d.deposit)} + 현장 ${won(d.onsite)})`:''}`:''}<br>상태: <b>시간 확정 대기</b></p>
+ <p class="muted">전화로 시간을 확정해 드려요. 예약금 안내는 예약이 확정될 때 드려요. 이 앱은 결제를 받지 않아요.<br>문의 ${d.phone}</p><a class="btn dark" href="tel:${d.phone.replace(/-/g,'')}">📞 전화하기</a></div>`;
+ $('#bf').reset();$('#date').value=nextClassDay();dpref();bsum();$('#done').scrollIntoView({behavior:'smooth'})};
 
 /* ================= ADMIN ================= */
 let TAB='dash',META=null,SV='week',monthYM,selDay,STQ='',STF='all',CUR=null;
@@ -198,11 +250,11 @@ async function adminLogin(silent){if(!silent)PW=$('#pw').value;const b=$('#lbtn'
  if(!ok){$('#lerr').textContent=d.error;if(silent){localStorage.removeItem('pw')}return}
  localStorage.pw=PW;$('#lerr').textContent='';$('#login').style.display='none';$('#adm').style.display='block';
  if(!wkStart){const d=new Date();d.setDate(d.getDate()-((d.getDay()+6)%7));wkStart=iso(d);monthYM=iso(new Date()).slice(0,7)}
- META=await A('meta').catch(()=>null);render()}
+ META=await A('meta').catch(()=>null);loadInfo();render()}
 function logout(){localStorage.removeItem('pw');PW='';showLogin('')}
 document.querySelectorAll('#atabs button').forEach(b=>b.onclick=()=>{TAB=b.dataset.t;document.querySelectorAll('#atabs button').forEach(x=>x.classList.toggle('on',x===b));scrollTo(0,0);render(true)});
 const skel=n=>'<div class="skel"></div>'.repeat(n);
-function render(fresh){const v=$('#av');if(fresh)v.innerHTML=skel(4);({dash:rDash,sched:rSched,stu:rStu})[TAB]().catch(()=>{})}
+function render(fresh){const v=$('#av');if(fresh)v.innerHTML=skel(4);({dash:rDash,lead:rLead,trial:rTrial,sched:rSched,stu:rStu,renew:rRenew,money:rMoney,report:rReport,prod:rProd})[TAB]().catch(()=>{})}
 function refresh(){render();if(CUR)CUR()}
 
 function clsCard(c,showDate){const names=[...(c.regulars||[]),...(c.makeups||[])].map(x=>x.name).concat((c.bookings||[]).filter(b=>!b.cancelled).map(b=>b.name+'(예약)'));
@@ -211,14 +263,6 @@ function clsCard(c,showDate){const names=[...(c.regulars||[]),...(c.makeups||[])
  <div class="names">${names.length?esc(names.join(', ')):'명단 없음'}</div>${c.cancelled?(c.note?`<div class="names">${esc(c.note)}</div>`:''):`<div class="bar"><i style="width:${pct}%"></i></div>`}</div>
  <div style="text-align:right"><b>${c.booked}</b><span class="muted">/${c.capacity}</span>${c.checked!=null&&!c.cancelled&&c.booked?`<div class="muted" style="font-size:11px">출석체크 ${c.checked}</div>`:''}</div></div>`}
 
-async function rDash(){const d=await A('dashboard');const live=d.classes.filter(c=>!c.cancelled);
- $('#av').innerHTML=`<div class="stats"><div class="stat"><b>${live.length}</b><span>오늘 수업</span></div><div class="stat"><b>${d.students}</b><span>수강생</span></div>
- <div class="stat ${d.unpaid_packages.length+d.unpaid_bookings.length?'hot':''}"><b>${d.unpaid_packages.length+d.unpaid_bookings.length}</b><span>미납</span></div><div class="stat ${d.expiring.length?'hot':''}"><b>${d.expiring.length}</b><span>갱신 필요</span></div></div>
- <div class="card"><div class="dayh"><h3 style="margin:0">오늘 수업</h3><span class="muted">${md(d.today)}</span></div>
- ${d.holiday?`<div class="alert">🛑 오늘은 휴무일이에요 (${esc(d.holiday)})</div>`:''}${d.classes.length?d.classes.map(c=>clsCard(c)).join(''):'<p class="empty">오늘은 수업이 없어요 😴</p>'}</div>
- <div class="card"><h3>🔔 수강권 갱신 알림</h3>${d.expiring.length?d.expiring.map(s=>`<div class="list-item row" onclick="openStudent(${s.id})" style="cursor:pointer"><div><b>${esc(s.name)}</b> <span class="tag ${s.left_n?'yel':'red'}">잔여 ${s.left_n}회</span><div class="muted">${esc(s.guardian||'')} ${esc(s.phone||'')}</div></div>${s.phone?`<a class="btn sm gray" style="flex:none" href="sms:${esc(s.phone)}" onclick="event.stopPropagation()">문자</a>`:''}</div>`).join(''):'<p class="empty">갱신이 필요한 수강생이 없어요 👍</p>'}</div>
- <div class="card"><h3>💸 미납 수강권</h3>${d.unpaid_packages.length?d.unpaid_packages.map(p=>`<div class="list-item" onclick="openStudent(${p.student_id})" style="cursor:pointer"><b>${esc(p.name)}</b> <span class="tag red">${p.pay_status}</span> <span class="muted">${ptl(p.ptype)} · ${won(p.price)}${p.paid_amount?` (납부 ${won(p.paid_amount)})`:''}</span></div>`).join(''):'<p class="empty">미납 수강권이 없어요</p>'}</div>
- <div class="card"><h3>⏳ 예약금 미입금 (1회 예약)</h3>${d.unpaid_bookings.length?d.unpaid_bookings.map(b=>`<div class="list-item row"><div><b>${esc(b.name)}</b> <span class="muted">${b.count}명 · ${md(b.date)} ${b.time}</span><div class="muted">${esc(b.phone)} · 예약금 ${won(b.deposit)}</div></div><button class="btn sm green" style="flex:none" onclick="P('booking_update',{id:${b.id},deposit_paid:1},'입금 확인했어요').then(refresh)">입금 확인</button></div>`).join(''):'<p class="empty">미입금 예약이 없어요</p>'}</div>`}
 const ptl=k=>(META?.ptypes.find(p=>p.key===k)||{label:k}).label;
 
 /* ---- schedule ---- */
@@ -250,18 +294,19 @@ async function openClass(id){CUR=()=>openClass(id);const c=await A('class?id='+i
   <div class="muted">${x.has_pkg?`잔여 <b style="color:${x.left<=1?'#ff6a71':'inherit'}">${x.left}회</b>`:'<span style="color:#ffc65c">수강권 없음</span>'}${x.guardian?' · '+esc(x.guardian):''}</div></div>
   ${c.cancelled?'':`<button class="chk ${x.status==='출석'?'on':''}" onclick="att(${c.id},${x.student_id},'${x.status==='출석'?'':'출석'}')">${x.status==='출석'?'✓ 출석':'출석'}</button><button class="chk ${x.status==='결석'?'ab':''}" style="width:46px" onclick="att(${c.id},${x.student_id},'${x.status==='결석'?'':'결석'}')">결석</button>`}
   ${x.src==='makeup'?`<button class="btn sm gray" onclick="P('makeup_delete',{id:${x.id}},'보강을 뺐어요').then(refresh)">✕</button>`:''}</div>`;
- const bk=c.bookings.map(b=>`<div class="ros" style="${b.cancelled?'opacity:.45;text-decoration:line-through':''}"><div class="info"><b>${esc(b.name)}</b> <span class="muted">${b.count}명 · ${esc(b.age||'-')}</span> <span class="tag">${esc(b.status)}</span>
-  <div class="muted"><a href="tel:${esc(b.phone)}">${esc(b.phone)}</a></div><div class="row" style="gap:6px;margin-top:6px;flex-wrap:wrap">
-  ${[['deposit_paid','예약금'],['balance_paid','잔금']].map(([k,l])=>`<button class="btn sm ${b[k]?'green':'gray'}" style="flex:none" onclick="P('booking_update',{id:${b.id},${k}:${b[k]?0:1}}).then(refresh)">${b[k]?'✓ ':''}${l}</button>`).join('')}
+ const bk=c.bookings.map(b=>{const cf=b.confirmed||b.deposit_paid;return `<div class="ros" style="${b.cancelled?'opacity:.45;text-decoration:line-through':''}"><div class="info"><b ${b.lead_id?`onclick="openLead(${b.lead_id})" style="cursor:pointer"`:''}>${esc(b.name)}</b> <span class="muted">${b.count}명 · ${esc(b.age||'-')}</span> <span class="tag">${esc(b.status)}</span>
+  <div class="muted">${telA(b.phone)}${b.message?' · '+esc(b.message):''}</div><div class="row" style="gap:6px;margin-top:6px;flex-wrap:wrap">
+  <button class="btn sm ${cf?'green':'gray'}" style="flex:none" onclick="P('booking_update',{id:${b.id},confirmed:${cf?0:1}}).then(refresh)">${cf?'✓ ':''}확정</button>
+  ${b.balance_paid?`<button class="btn sm green" style="flex:none" onclick="if(confirm('결제 기록을 취소할까요? 장부에서도 빠져요.'))P('booking_update',{id:${b.id},paid:0},'결제 기록을 취소했어요').then(refresh)">✓ 결제 ${won(b.paid_amount)}</button>`:`<button class="btn sm gray" style="flex:none" data-n="${esc(b.name)}" onclick="payForm(${b.id},0,this.dataset.n)">결제 받음</button>`}
   <button class="btn sm gray" style="flex:none" onclick="if(confirm('${b.cancelled?'복구':'취소'}할까요?'))P('booking_update',{id:${b.id},cancelled:${b.cancelled?0:1}}).then(refresh)">${b.cancelled?'복구':'예약 취소'}</button></div></div>
-  ${b.cancelled?'':`<button class="chk ${b.attended?'on':''}" onclick="P('booking_update',{id:${b.id},attended:${b.attended?0:1}}).then(refresh)">${b.attended?'✓ 출석':'출석'}</button>`}</div>`).join('');
+  ${b.cancelled?'':`<button class="chk ${b.attended?'on':''}" onclick="P('booking_update',{id:${b.id},attended:${b.attended?0:1}}).then(refresh)">${b.attended?'✓ 출석':'출석'}</button>`}</div>`}).join('');
  const all=[...c.regulars,...c.makeups];
  sheet(shTop(`${md(c.date)} ${c.time}`)+`<div class="muted" style="margin:-6px 0 12px">${esc(c.title)} · ${c.booked}/${c.capacity}명 ${c.cancelled?'<span class="tag red">휴강</span>':''} ${c.note?'· '+esc(c.note):''}</div>
   ${c.cancelled?'':`<div class="row" style="margin-bottom:12px"><button class="btn green" style="padding:11px" onclick="attAll(${c.id})" ${all.length?'':'disabled'}>✓ 정규 전원 출석</button></div>`}
   <div class="card"><h4>정규 수강생 (${c.regulars.length})</h4>${c.regulars.map(ros).join('')||'<p class="muted">고정 배정된 수강생이 없어요</p>'}</div>
   <div class="card"><h4>보강 (${c.makeups.length})</h4>${c.makeups.map(ros).join('')||'<p class="muted" style="margin:0 0 8px">보강 수강생이 없어요</p>'}
    ${c.cancelled?'':`<div class="row"><select id="mkS"><option value="">수강생 선택…</option></select><button class="btn sm" style="flex:none" onclick="addMk(${c.id})">＋ 보강</button></div>`}</div>
-  <div class="card"><h4>1회 예약 (${c.bookings.filter(b=>!b.cancelled).length})</h4>${bk||'<p class="muted" style="margin:0">예약이 없어요</p>'}</div>
+  <div class="card"><h4>체험 예약 (${c.bookings.filter(b=>!b.cancelled).length})</h4>${bk||'<p class="muted" style="margin:0">예약이 없어요</p>'}</div>
   <div class="card"><h4>수업 관리</h4><label>정원</label><div class="row"><input type="number" id="cCap" value="${c.capacity}" min="0" max="50" inputmode="numeric"><button class="btn sm gray" style="flex:none" onclick="P('class_update',{id:${c.id},capacity:$('#cCap').value},'정원을 바꿨어요').then(refresh)">저장</button></div>
    <label>메모</label><div class="row"><input id="cNote" value="${esc(c.note||'')}" placeholder="예: 강사 대체"><button class="btn sm gray" style="flex:none" onclick="P('class_update',{id:${c.id},note:$('#cNote').value},'저장했어요').then(refresh)">저장</button></div>
    <div class="row" style="flex-wrap:wrap;gap:8px">${c.moved_to?'':`<button class="btn sm ${c.cancelled?'green':'warn'}" onclick="if(confirm('${c.cancelled?'수업을 복구할까요?':'이 수업을 휴강할까요?'}'))P('class_update',{id:${c.id},cancelled:${c.cancelled?0:1}},'${c.cancelled?'복구했어요':'휴강 처리했어요'}').then(refresh)">${c.cancelled?'수업 복구':'휴강'}</button>`}
@@ -273,7 +318,7 @@ async function addMk(cid){const v=$('#mkS').value;if(!v)return toast('수강생�
 function moveForm(id,d,t){sheet(shTop('수업 이동')+`<p class="muted">${md(d)} ${t} 수업을 옮겨요. 예약·보강 명단도 같이 옮겨지고, 정규 수강생은 새 시간 명단에 표시돼요.</p>
  <label>새 날짜</label><input type="date" id="mvD" value="${d}"><label>새 시간</label><input type="time" id="mvT" value="${t}"><button class="btn" onclick="P('class_move',{id:${id},date:$('#mvD').value,time:$('#mvT').value},'수업을 옮겼어요').then(r=>{render();openClass(r.id)})">이동하기</button>`)}
 function classForm(){CUR=null;sheet(shTop('수업 추가')+`<label>날짜</label><input type="date" id="ad" value="${iso(new Date())}"><div class="row"><div><label>시간</label><input type="time" id="at" value="19:00"></div><div><label>정원</label><input type="number" id="acap" value="5" inputmode="numeric"></div></div>
- <label>수업명</label><input id="atitle" value="특별 수업"><label>요금 구분</label><select id="akind">${opt([['adult','성인 (1회 75,000)'],['kids','키즈 (1회 50,000)'],['weekend','주말 (1회 60,000)']])}</select>
+ <label>수업명</label><input id="atitle" value="특별 수업"><label>구분</label><select id="akind">${opt([['adult','성인'],['kids','키즈'],['weekend','주말']])}</select>
  <label>메모</label><input id="anote" placeholder="선택"><button class="btn" onclick="if(!$('#ad').value)return toast('날짜를 선택하세요',1);P('class_add',{date:$('#ad').value,time:$('#at').value,title:$('#atitle').value,capacity:$('#acap').value,kind:$('#akind').value,note:$('#anote').value},'수업을 추가했어요').then(()=>{closeSheet();render()})">추가</button>`)}
 async function holidayForm(){CUR=null;sheet(shTop('휴무일 지정')+`<p class="muted">휴무일로 지정하면 그날 수업이 모두 휴강 처리되고 예약을 받지 않아요.</p><label>날짜</label><input type="date" id="hd" value="${selDay||iso(new Date())}">
  <label>사유</label><input id="hr" placeholder="예: 추석 연휴"><div class="row"><button class="btn" onclick="P('holiday_add',{date:$('#hd').value,reason:$('#hr').value},'휴무일로 지정했어요').then(()=>{closeSheet();render()})">휴무 지정</button>
@@ -324,11 +369,189 @@ function pkgForm(sid,p){const pt=META.ptypes;sheet(shTop(p.id?'수강권 수정'
  ${p.id?`<button class="btn ghost" style="margin-top:8px;color:#ff8a90" onclick="if(confirm('이 수강권을 삭제할까요?'))P('package_delete',{id:${p.id}},'삭제했어요').then(()=>openStudent(${sid}))">수강권 삭제</button>`:''}<button class="btn ghost" style="margin-top:8px" onclick="openStudent(${sid})">← 돌아가기</button>`)}
 async function savePkg(sid,id){await P('package_save',{id:id||undefined,student_id:sid,ptype:$('#pT').value,sessions:$('#pS').value,remaining:$('#pR').value,start_date:$('#pD').value,price:$('#pPr').value,pay_status:$('#pSt').value,pay_method:$('#pM').value,paid_amount:$('#pPa').value,memo:$('#pMe').value},'수강권을 저장했어요');render();openStudent(sid)}
 
+/* ================= v4 ADMIN ================= */
+const today0=()=>META?.today||iso(new Date());
+const addDays=(s,n)=>{const d=pd(s);d.setDate(d.getDate()+n);return iso(d)};
+const STG_TAG={'신규문의':'blue','체험예약':'yel','체험완료':'yel','정규등록':'green','보류':''};
+const telA=p=>p?`<a href="tel:${esc(String(p).replace(/[^0-9]/g,''))}" onclick="event.stopPropagation()">${esc(p)}</a>`:'<span class="muted">연락처 없음</span>';
+async function copyText(t){try{await navigator.clipboard.writeText(t);toast('복사했어요. 문자·카톡에 붙여 넣으세요')}catch(e){const a=document.createElement('textarea');a.value=t;document.body.append(a);a.select();try{document.execCommand('copy');toast('복사했어요')}catch(_){toast('복사가 안 돼요. 길게 눌러 복사해 주세요',1)}a.remove()}}
+const sec=(title,items,empty)=>`<div class="card"><h3>${title}</h3>${items.length?items.join(''):`<p class="empty">${empty}</p>`}</div>`;
+
+async function rDash(){const d=await A('dashboard');const live=d.classes.filter(c=>!c.cancelled);
+ const n=d.trial_wait.length+d.deposit_due.length+d.trial_unpaid.length+d.followups.length+d.new_leads.length+d.new_bookings.length+d.renew_due.length+d.unpaid_packages.length+d.unpaid_bookings.length;
+ const tb=document.querySelector('#atabs button[data-t=dash]');tb.innerHTML='✅ 할 일'+(n?`<i>${n}</i>`:'');
+ const leadRow=l=>`<div class="todo" onclick="openLead(${l.id})" style="cursor:pointer"><div class="info"><b>${esc(l.name)}</b> <span class="tag ${STG_TAG[l.stage]}">${l.stage}</span>${l.next_date&&l.next_date<d.today?' <span class="tag red">지남</span>':''}<div class="muted">${esc(l.interest||'')} ${l.source?'· '+esc(l.source):''}</div><div class="muted">${telA(l.phone)}</div></div><button class="btn sm green" style="flex:none" onclick="event.stopPropagation();followForm(${l.id})">연락함</button></div>`;
+ $('#av').innerHTML=`<div class="stats"><div class="stat"><b>${d.week.inquiries}</b><span>이번 주 문의</span></div><div class="stat"><b>${d.week.trials}</b><span>체험 예약</span></div><div class="stat"><b>${d.week.conversions}</b><span>정규 등록</span></div><div class="stat"><b style="font-size:20px;line-height:1.6">${(d.week.revenue/10000).toLocaleString()}만</b><span>이번 주 매출</span></div></div>
+ ${n?'':'<div class="card ok"><b>오늘 할 일을 다 했어요 👍</b></div>'}
+ ${d.trial_wait.length?sec('🙋 체험 신청 · 시간 확정 필요',d.trial_wait.map(x=>`<div class="todo" onclick="openTrial(${x.id})" style="cursor:pointer"><div class="info"><b>${esc(x.name)}</b> <span class="muted">${x.count}명</span><div class="muted">희망 ${md(x.pref_date)} · ${esc(x.pref_time)}</div><div class="muted">${telA(x.phone)}</div></div><button class="btn sm green" style="flex:none" onclick="event.stopPropagation();openTrial(${x.id})">시간 확정</button></div>`),''):''}
+ ${d.deposit_due.length?sec('💵 예약금 입금 확인',d.deposit_due.map(x=>`<div class="todo"><div class="info" onclick="openTrial(${x.id})" style="cursor:pointer"><b>${esc(x.name)}</b> <span class="muted">${md(x.date)} ${esc(x.conf_time||'')}</span><div class="muted">예약금 ${won(x.deposit_amount)} · ${telA(x.phone)}</div></div><button class="btn sm green" style="flex:none" onclick="P('trial_update',{id:${x.id},deposit_paid:1},'예약금 입금 확인 ✓').then(refresh)">입금 확인</button></div>`),''):''}
+ ${d.trial_unpaid.length?sec('💳 체험 잔금 결제 확인',d.trial_unpaid.map(x=>`<div class="todo"><div class="info" onclick="openTrial(${x.id})" style="cursor:pointer"><b>${esc(x.name)}</b> <span class="muted">${x.count}명 · ${md(x.date)} ${esc(x.conf_time||'')}</span><div class="muted">${x.balance_due!=null?'현장 결제 '+won(x.balance_due):'금액 확인 필요'}${x.deposit_paid?' (예약금 입금됨)':''}</div></div><button class="btn sm green" style="flex:none" onclick="trialPayForm(${x.id},${x.balance_due??0})">결제 받음</button></div>`),''):''}
+ ${d.followups.length?sec('📞 오늘 연락할 문의',d.followups.map(leadRow),''):''}
+ ${d.new_leads.length?sec('🆕 새 문의 (연락 전)',d.new_leads.map(leadRow),''):''}
+ ${d.new_bookings.length?sec('🙋 새 예약 신청 (확정 필요)',d.new_bookings.map(b=>`<div class="todo"><div class="info"><b>${esc(b.name)}</b> <span class="muted">${b.count}명 · ${md(b.date)} ${b.time}</span><div class="muted">${telA(b.phone)}${b.message?' · '+esc(b.message):''}</div></div><button class="btn sm green" style="flex:none" onclick="P('booking_update',{id:${b.id},confirmed:1},'예약을 확정했어요').then(refresh)">확정</button></div>`),''):''}
+ ${d.renew_due.length?sec('🔁 재등록 안내할 수강생',d.renew_due.map(x=>`<div class="todo"><div class="info"><b>${esc(x.name)}</b> <span class="tag ${x.left?'yel':'red'}">잔여 ${x.left}회</span>${x.expired?' <span class="tag red">기간 지남</span>':''}<div class="muted">${telA(x.phone)}</div></div><button class="btn sm" style="flex:none" onclick="goTab('renew')">안내 문구</button></div>`),''):''}
+ ${d.unpaid_bookings.length?sec('💳 체험 결제 확인',d.unpaid_bookings.map(b=>`<div class="todo"><div class="info"><b>${esc(b.name)}</b> <span class="muted">${b.count}명 · ${md(b.date)} ${b.time}</span><div class="muted">${b.hint?'예상 '+won(b.hint):'금액 확인 필요'}${b.attended?' · 출석함':''}</div></div><button class="btn sm green" style="flex:none" data-n="${esc(b.name)}" onclick="payForm(${b.id},${b.hint||0},this.dataset.n)">결제 받음</button></div>`),''):''}
+ ${d.unpaid_packages.length?sec('💸 미납 수강권',d.unpaid_packages.map(p=>`<div class="todo" onclick="openStudent(${p.student_id})" style="cursor:pointer"><div class="info"><b>${esc(p.name)}</b> <span class="tag red">${p.pay_status}</span><div class="muted">${ptl(p.ptype)} · 남은 금액 ${won(p.due)}</div></div><span class="muted">›</span></div>`),''):''}
+ <div class="card"><div class="dayh"><h3 style="margin:0">오늘 수업</h3><span class="muted">${md(d.today)}</span></div>
+ ${d.holiday?`<div class="alert">🛑 오늘은 휴무일이에요 (${esc(d.holiday)})</div>`:''}${d.trials_today.map(x=>`<div class="cls" onclick="openTrial(${x.id})"><div class="tm">${esc(x.conf_time)}</div><div class="info"><b>체험 · ${esc(x.name)}</b> ${trialTag(x)}<div class="names">${x.count}명 · ${esc(x.product||'')}</div></div></div>`).join('')}${d.classes.length?d.classes.map(c=>clsCard(c)).join(''):(d.trials_today.length?'':'<p class="empty">오늘은 수업이 없어요 😴</p>')}</div>`}
+function goTab(t){TAB=t;document.querySelectorAll('#atabs button').forEach(x=>x.classList.toggle('on',x.dataset.t===t));closeSheet();scrollTo(0,0);render(true)}
+function payForm(bid,hint,name){sheet(shTop('결제 받음')+`<p class="muted" style="margin-top:0">${esc(name)} · 받은 금액을 확인해 주세요. 장부에 자동 기록돼요.</p>
+ <label>받은 금액</label><input type="number" id="pyA" value="${hint||''}" inputmode="numeric" placeholder="예: 50000"><label>결제 방법</label><select id="pyM"><option value="">-</option>${opt(META.pay_methods.map(x=>[x,x]))}</select>
+ <button class="btn" onclick="if(!(+$('#pyA').value>0))return toast('금액을 입력해 주세요',1);P('booking_update',{id:${bid},paid:1,amount:$('#pyA').value,pay_method:$('#pyM').value},'결제를 기록했어요').then(()=>{closeSheet();refresh()})">저장</button>`)}
+
+/* ---- leads ---- */
+let LST='',LQ='';
+async function rLead(){const d=await A('leads?stage='+encodeURIComponent(LST)+'&q='+encodeURIComponent(LQ));const had=document.activeElement&&document.activeElement.id==='lq';
+ $('#av').innerHTML=`<button class="btn" style="margin-bottom:10px" onclick="leadForm()">＋ 문의 등록 (전화·DM 받았을 때)</button>
+ <div class="stage-bar">${d.stages.map(st=>`<button class="${LST===st?'on':''}" onclick="LST=LST==='${st}'?'':'${st}';render()"><b>${d.counts[st]||0}</b>${st}</button>`).join('')}</div>
+ <input id="lq" type="search" placeholder="🔍 이름·연락처·메모 검색" value="${esc(LQ)}" style="margin-top:0">
+ ${LST?`<p class="muted" style="margin:0 2px 8px">'${LST}'만 보는 중 · <a href="#" onclick="LST='';render();return false">전체 보기</a></p>`:''}
+ ${d.leads.map(l=>`<div class="lead" onclick="openLead(${l.id})"><div class="top2"><b style="font-size:16px">${esc(l.name)}</b><span class="tag ${STG_TAG[l.stage]}">${l.stage}</span>${l.source?`<span class="tag">${esc(l.source)}</span>`:''}${l.next_date?`<span class="tag ${l.next_date<=d.today?'red':''}">📞 ${md(l.next_date)}</span>`:''}</div>
+  <div class="muted">${esc(l.interest||'관심 수업 미정')}${l.people>1?` · ${l.people}명`:''}${l.preferred?' · 희망 '+esc(l.preferred):''}</div><div class="muted">${telA(l.phone)} · ${esc(l.origin||'')} ${l.created?md(l.created.slice(0,10)):''}</div></div>`).join('')||'<p class="empty">문의가 없어요.<br>홈페이지 문의·예약은 여기로 자동으로 들어와요.</p>'}`;
+ const q=$('#lq');q.oninput=()=>{clearTimeout(rLead.t);rLead.t=setTimeout(()=>{LQ=q.value;render()},250)};if(had){q.focus();q.setSelectionRange(q.value.length,q.value.length)}}
+function leadForm(l={}){CUR=null;const ps=META.products;sheet(shTop(l.id?'문의 수정':'문의 등록')+`<div class="row"><div><label>이름</label><input id="lN" value="${esc(l.name||'')}" placeholder="홍길동"></div><div><label>연락처</label><input id="lP" inputmode="tel" value="${esc(l.phone||'')}" placeholder="010-0000-0000"></div></div>
+ <label>어디서 왔나요?</label><div class="chipsel" id="lSrc">${META.sources.map(x=>`<button type="button" class="${(l.source||'')===x?'on':''}" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on'));this.classList.add('on')">${x}</button>`).join('')}</div>
+ <label>관심 수업</label><select id="lPr"><option value="">미정</option>${opt(ps.map(p=>[p.id,p.name]),l.product_id)}</select>
+ <div class="row"><div><label>구분</label><select id="lK">${opt([['','미정'],['kids','키즈'],['adult','성인']],l.kind||'')}</select></div><div><label>인원</label><input type="number" id="lPe" value="${l.people||1}" inputmode="numeric"></div></div>
+ <label>희망 날짜/시간</label><input id="lPf" value="${esc(l.preferred||'')}" placeholder="예: 토요일 오후">
+ <label>다음 연락일</label><input type="date" id="lNd" value="${l.id?(l.next_date||''):today0()}">
+ <label>메모</label><textarea id="lM" style="min-height:70px">${esc(l.memo||'')}</textarea>
+ <button class="btn" onclick="saveLead(${l.id||0})">저장</button>`)}
+async function saveLead(id){const src=$('#lSrc .on');const r=await P('lead_save',{id:id||undefined,name:$('#lN').value,phone:$('#lP').value,source:src?src.textContent:'기타',product_id:$('#lPr').value||null,kind:$('#lK').value,people:$('#lPe').value,preferred:$('#lPf').value,next_date:$('#lNd').value,memo:$('#lM').value},'저장했어요');render();openLead(r.id)}
+async function openLead(id){CUR=()=>openLead(id);const l=await A('lead?id='+id);if(!META)META=await A('meta');
+ sheet(shTop(esc(l.name),`<button class="btn sm gray" onclick='leadForm(${JSON.stringify(l).replace(/'/g,"&#39;")})'>수정</button>`)+
+ `<div class="muted" style="margin:-6px 0 10px"><span class="tag ${STG_TAG[l.stage]}">${l.stage}</span> ${l.source?`<span class="tag">${esc(l.source)}</span>`:''} ${esc(l.origin||'')} · ${l.created?md(l.created.slice(0,10)):''} 접수<br>${telA(l.phone)}${l.interest?'<br>🛹 '+esc(l.interest):''}${l.people>1?` · ${l.people}명`:''}${l.preferred?'<br>🗓 희망: '+esc(l.preferred):''}${l.message?`<br>💬 ${esc(l.message)}`:''}</div>
+ ${l.phone?`<div class="bigbtns"><a class="btn dark" href="tel:${esc(l.phone.replace(/[^0-9]/g,''))}">📞 전화</a><button class="btn gray" onclick="followForm(${l.id})">✍️ 연락 기록</button></div>`:''}
+ <div class="card"><h4>단계</h4><div class="stage-bar" style="margin:0">${META.stages.map(st=>`<button class="${l.stage===st?'on':''}" onclick="${st==='정규등록'&&!l.student_id?`convertForm(${l.id})`:`P('lead_stage',{id:${l.id},stage:'${st}'},'${st}(으)로 옮겼어요').then(refresh)`}">${st}</button>`).join('')}</div>
+  ${l.stage!=='정규등록'||!l.student_id?`<button class="btn" style="margin-top:10px" onclick="convertForm(${l.id})">🎉 정규 등록 (수강생 + 4회 수강권)</button>`:`<button class="btn gray" style="margin-top:10px" onclick="openStudent(${l.student_id})">👤 수강생 보기${l.student?' · '+esc(l.student.name):''}</button>`}</div>
+ <div class="card"><h4>다음 연락일 ${l.next_date?`<span class="tag ${l.next_date<=today0()?'red':''}">${md(l.next_date)}</span>`:'<span class="muted">없음</span>'}</h4>
+  <div class="row" style="flex-wrap:wrap;gap:6px">${[['오늘',0],['내일',1],['3일 뒤',3],['1주 뒤',7]].map(([t,n])=>`<button class="btn sm gray" onclick="P('lead_followup',{id:${l.id},next_date:'${addDays(today0(),n)}'},'다음 연락일: ${t}').then(refresh)">${t}</button>`).join('')}<button class="btn sm ghost" onclick="P('lead_followup',{id:${l.id},next_date:''},'연락일을 지웠어요').then(refresh)">없음</button></div></div>
+ ${l.memo?`<div class="card"><h4>메모</h4><div style="white-space:pre-wrap;font-size:14px">${esc(l.memo)}</div></div>`:''}
+ ${l.trials.length?`<div class="card"><h4>체험 신청</h4>${l.trials.map(x=>`<div class="list-item" onclick="openTrial(${x.id})" style="cursor:pointer">${trialLine(x)} ${trialTag(x)}</div>`).join('')}</div>`:''}
+ ${l.bookings.length?`<div class="card"><h4>예약</h4>${l.bookings.map(b=>`<div class="list-item" onclick="openClass(${b.class_id})" style="cursor:pointer">${md(b.date)} ${b.time} · ${b.count}명 <span class="tag">${esc(b.status||'')}</span>${b.paid_amount?' · '+won(b.paid_amount):''}</div>`).join('')}</div>`:''}
+ <button class="btn ghost" style="color:#ff8a90" onclick="if(confirm('이 문의를 삭제할까요? (되돌릴 수 없어요)'))P('lead_delete',{id:${l.id}},'삭제했어요').then(()=>{closeSheet();render()})">문의 삭제</button>`)}
+function followForm(id){sheet(shTop('연락 기록')+`<label>무슨 이야기를 했나요? (메모에 날짜와 함께 남아요)</label><input id="fN" placeholder="예: 토요일 2시 체험 원함">
+ <label>다음 연락일</label><div class="chipsel" id="fD">${[['없음',''],['내일',addDays(today0(),1)],['3일 뒤',addDays(today0(),3)],['1주 뒤',addDays(today0(),7)],['2주 뒤',addDays(today0(),14)]].map(([t,v],i)=>`<button type="button" data-v="${v}" class="${i===2?'on':''}" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on'));this.classList.add('on')">${t}</button>`).join('')}</div>
+ <button class="btn" onclick="P('lead_followup',{id:${id},note:$('#fN').value,next_date:$('#fD .on').dataset.v},'기록했어요').then(()=>{closeSheet();render();openLead(${id})})">저장</button>`)}
+async function convertForm(id){const l=await A('lead?id='+id);if(!META)META=await A('meta');const k=l.kind||'kids';
+ sheet(shTop('정규 등록')+`<p class="muted" style="margin-top:0">수강생으로 등록하고 4회 수강권을 만들어요. 결제 금액은 장부에 자동으로 들어가요.</p>
+ <div class="row"><div><label>수강생 이름</label><input id="cvN" value="${esc(l.name)}"></div><div><label>구분</label><select id="cvK">${opt([['kids','키즈'],['adult','성인']],k)}</select></div></div>
+ <div class="row"><div><label>보호자명</label><input id="cvG" placeholder="키즈만"></div><div><label>학년/나이</label><input id="cvGr" placeholder="초3 / 9살"></div></div>
+ <label>수강권</label><select id="cvT" onchange="const x=META.ptypes.find(x=>x.key===this.value);$('#cvPr').value=x?x.price:''"><option value="">수강권 없이 수강생만 등록</option>${opt(META.ptypes.map(x=>[x.key,`${x.label} 4회 · ${won(x.price)}`]),k==='adult'?'wd_adult':'wd_kids')}</select>
+ <div class="row"><div><label>금액</label><input type="number" id="cvPr" value="${(META.ptypes.find(x=>x.key===(k==='adult'?'wd_adult':'wd_kids'))||{}).price||''}" inputmode="numeric"></div><div><label>시작일</label><input type="date" id="cvD" value="${today0()}"></div></div>
+ <div class="row"><div><label>결제 상태</label><select id="cvS">${opt(META.pay_status.map(x=>[x,x]),'완납')}</select></div><div><label>결제 방법</label><select id="cvM"><option value="">-</option>${opt(META.pay_methods.map(x=>[x,x]))}</select></div></div>
+ <label>납부 금액 (일부 납부 시)</label><input type="number" id="cvPa" inputmode="numeric" placeholder="완납이면 비워 두세요">
+ <button class="btn" onclick="doConvert(${id})">등록하기</button>`)}
+async function doConvert(id){const r=await P('lead_convert',{id,name:$('#cvN').value,kind:$('#cvK').value,guardian:$('#cvG').value,grade:$('#cvGr').value,ptype:$('#cvT').value,price:$('#cvPr').value,start_date:$('#cvD').value,pay_status:$('#cvS').value,pay_method:$('#cvM').value,paid_amount:$('#cvPa').value},'정규 등록 완료 🎉');META=await A('meta');render();openStudent(r.student_id)}
+
+/* ---- renewals ---- */
+let RSET=false;
+async function rRenew(){const d=await A('renewals');window._RN=d.items;
+ $('#av').innerHTML=`<p class="muted" style="margin:0 2px 10px">잔여 1회 이하${d.valid_days?` 또는 시작 후 ${d.valid_days}일 지난`:''} 수강생이에요. 문구를 복사해서 직접 보내 주세요. 앱은 메시지를 보내지 않아요.</p>
+ ${d.items.map((x,i)=>`<div class="card"><div class="row" style="align-items:flex-start"><div><b style="font-size:17px" onclick="openStudent(${x.id})">${esc(x.name)}</b> <span class="tag ${x.left?'yel':'red'}">잔여 ${x.left}회</span>${x.expired?' <span class="tag red">기간 지남</span>':''}${x.notified?` <span class="tag green">안내함 ${md(x.notified)}</span>`:''}
+  <div class="muted">${x.guardian?esc(x.guardian)+' · ':''}${telA(x.phone)}${x.last_attend?' · 마지막 출석 '+md(x.last_attend):''}</div></div></div>
+  <div class="msgbox" id="rm${i}">${esc(x.message)}</div>
+  <div class="bigbtns"><button class="btn" onclick="copyText(window._RN[${i}].message)">📋 문구 복사</button>${x.phone?`<a class="btn dark" href="tel:${esc(x.phone.replace(/[^0-9]/g,''))}">📞 전화</a>`:'<span></span>'}
+  <button class="btn ${x.notified?'gray':'green'}" onclick="P('renew_mark',{student_id:${x.id},on:${x.notified?0:1}},'${x.notified?'안내 표시를 지웠어요':'안내함으로 표시했어요'}').then(refresh)">${x.notified?'안내 표시 지우기':'✓ 안내함'}</button>
+  <button class="btn gray" onclick="openStudent(${x.id}).then(()=>pkgForm(${x.id},{ptype:'${x.ptype}'}))">＋ 재등록</button></div></div>`).join('')||'<p class="empty">재등록 안내할 수강생이 없어요 👍</p>'}
+ <div class="card"><h4 onclick="RSET=!RSET;render()" style="cursor:pointer;margin:0">⚙️ 안내 문구·유효기간 설정 ${RSET?'▲':'▼'}</h4>${RSET?`<p class="muted">{이름} {잔여} {상품} {금액} 은 자동으로 바뀌어요.</p><textarea id="rT" style="min-height:120px">${esc(d.template.replace(/\\n/g,'\n'))}</textarea>
+  <label>수강권 유효기간 (일, 0 = 제한 없음)</label><input type="number" id="rV" value="${d.valid_days}" inputmode="numeric">
+  <div class="row"><button class="btn" onclick="P('settings_save',{renew_tpl:$('#rT').value,pkg_valid_days:$('#rV').value},'저장했어요').then(refresh)">저장</button><button class="btn ghost" onclick="$('#rT').value=${JSON.stringify(d.default_template).replace(/"/g,'&quot;')}">기본 문구</button></div>`:''}</div>`}
+
+/* ---- money ---- */
+let LYM=null;
+async function rMoney(){LYM=LYM||today0().slice(0,7);const d=await A('ledger?ym='+LYM);const mx=Math.max(1,...d.history.map(h=>h.income));
+ const lst=(arr)=>arr.map(x=>`<div class="list-item row"><div>${esc(x.name)}</div><b style="flex:none">${won(x.amount)}</b></div>`).join('');
+ $('#av').innerHTML=`<div class="toolbar"><button class="btn sm gray" onclick="shiftLYM(-1)">◀</button><div class="grow">${LYM.replace('-','년 ')}월</div><button class="btn sm gray" onclick="shiftLYM(1)">▶</button></div>
+ <div class="card"><div class="row" style="text-align:center"><div><span class="muted">매출</span><div class="money">${won(d.income)}</div></div><div><span class="muted">지출</span><div class="money">${won(d.expense)}</div></div></div>
+  <div style="text-align:center;margin-top:10px"><span class="muted">순이익</span><div class="money ${d.net<0?'neg':'pos'}" style="font-size:42px">${won(d.net)}</div></div>
+  <div class="hbar">${d.history.map(h=>`<div><i style="height:${Math.round(h.income/mx*70)}px;${h.ym===LYM?'':'opacity:.5'}"></i>${+h.ym.slice(5)}월</div>`).join('')}</div></div>
+ <div class="bigbtns"><button class="btn" onclick="moneyForm()">＋ 매출 기록</button><button class="btn gray" onclick="expForm()">＋ 지출 기록</button></div>
+ <div class="card"><h4>상품별 매출</h4>${lst(d.by_product)||'<p class="muted">기록이 없어요</p>'}</div>
+ ${d.by_method.length?`<div class="card"><h4>결제 방법별</h4>${lst(d.by_method)}</div>`:''}
+ <div class="card"><h4>지출</h4>${lst(d.by_expense)||'<p class="muted">기록이 없어요</p>'}</div>
+ <div class="card"><h4>매출 내역 (${d.payments.length})</h4>${d.payments.map(p=>`<div class="list-item row" ${p.source==='manual'?`onclick='moneyForm(${JSON.stringify(p).replace(/'/g,"&#39;")})' style="cursor:pointer"`:''}><div><b>${esc(p.product)}</b> ${p.source==='manual'?'':`<span class="tag blue">자동·${p.source==='package'?'수강권':'예약'}</span>`}<div class="muted">${md(p.date)}${p.method?' · '+esc(p.method):''}${p.memo?' · '+esc(p.memo):''}</div></div><b style="flex:none">${won(p.amount)}</b></div>`).join('')||'<p class="muted">기록이 없어요</p>'}</div>
+ <div class="card"><h4>지출 내역 (${d.expenses.length})</h4>${d.expenses.map(e=>`<div class="list-item row" onclick='expForm(${JSON.stringify(e).replace(/'/g,"&#39;")})' style="cursor:pointer"><div><b>${esc(e.category)}</b><div class="muted">${md(e.date)}${e.memo?' · '+esc(e.memo):''}</div></div><b style="flex:none;color:#ff8a90">-${won(e.amount)}</b></div>`).join('')||'<p class="muted">기록이 없어요</p>'}</div>
+ <p class="muted" style="margin:0 4px">수강권 결제와 체험 결제는 자동으로 들어와요. 용품 판매 등은 ‘매출 기록’으로 넣어 주세요.</p>`}
+function shiftLYM(n){const d=pd(LYM+'-01');d.setMonth(d.getMonth()+n);LYM=iso(d).slice(0,7);render(1)}
+function moneyForm(p={}){CUR=null;sheet(shTop(p.id?'매출 수정':'매출 기록')+`<label>날짜</label><input type="date" id="mD" value="${p.date||today0()}">
+ <label>상품</label><select id="mP" onchange="const x=META.products.find(x=>x.id==this.value);if(x&&x.price!=null&&!$('#mA').value)$('#mA').value=x.price"><option value="">기타 (직접 입력)</option>${opt(META.products.map(x=>[x.id,x.name]),p.product_id)}</select>
+ <input id="mN" value="${esc(p.product_id?'':(p.product||''))}" placeholder="기타 항목 이름 (예: 보드 판매)">
+ <div class="row"><div><label>금액</label><input type="number" id="mA" value="${p.amount||''}" inputmode="numeric"></div><div><label>결제 방법</label><select id="mM"><option value="">-</option>${opt(META.pay_methods.map(x=>[x,x]),p.method)}</select></div></div>
+ <label>메모</label><input id="mMe" value="${esc(p.memo||'')}"><button class="btn" onclick="P('payment_save',{id:${p.id||0}||undefined,date:$('#mD').value,product_id:$('#mP').value||null,product:$('#mP').value?'':$('#mN').value,amount:$('#mA').value,method:$('#mM').value,memo:$('#mMe').value},'저장했어요').then(()=>{closeSheet();render()})">저장</button>
+ ${p.id?`<button class="btn ghost" style="margin-top:8px;color:#ff8a90" onclick="if(confirm('이 매출 기록을 삭제할까요?'))P('payment_delete',{id:${p.id}},'삭제했어요').then(()=>{closeSheet();render()})">삭제</button>`:''}`)}
+function expForm(e={}){CUR=null;sheet(shTop(e.id?'지출 수정':'지출 기록')+`<label>날짜</label><input type="date" id="eD" value="${e.date||today0()}">
+ <label>항목</label><div class="chipsel" id="eC">${META.expense_cats.map(x=>`<button type="button" class="${(e.category||'기타')===x?'on':''}" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on'));this.classList.add('on')">${x}</button>`).join('')}</div>
+ <label>금액</label><input type="number" id="eA" value="${e.amount||''}" inputmode="numeric"><label>메모</label><input id="eM" value="${esc(e.memo||'')}" placeholder="예: 10월 임대료">
+ <button class="btn" onclick="P('expense_save',{id:${e.id||0}||undefined,date:$('#eD').value,category:$('#eC .on').textContent,amount:$('#eA').value,memo:$('#eM').value},'저장했어요').then(()=>{closeSheet();render()})">저장</button>
+ ${e.id?`<button class="btn ghost" style="margin-top:8px;color:#ff8a90" onclick="if(confirm('이 지출 기록을 삭제할까요?'))P('expense_delete',{id:${e.id}},'삭제했어요').then(()=>{closeSheet();render()})">삭제</button>`:''}`)}
+
+/* ---- weekly report ---- */
+let RWK=null;
+async function rReport(){const d=await A('report'+(RWK?'?start='+RWK:''));RWK=d.start;
+ const diff=(a,b)=>b?` <small>지난주 ${b.toLocaleString()}</small>`:'';
+ $('#av').innerHTML=`<div class="toolbar"><button class="btn sm gray" onclick="RWK=addDays(RWK,-7);render(1)">◀</button><div class="grow">${md(d.start)} ~ ${md(d.end)}</div><button class="btn sm gray" onclick="RWK=addDays(RWK,7);render(1)">▶</button></div>
+ <div class="rep"><div class="stat"><span>📥 새 문의</span><b>${d.inquiries}</b><small>지난주 ${d.prev_inquiries}</small></div><div class="stat"><span>🙋 체험 예약</span><b>${d.trials}</b><small>체험 완료 ${d.trial_done}</small></div>
+ <div class="stat"><span>🎉 정규 전환</span><b>${d.conversions}</b><small>${d.conv_rate!=null?'문의 대비 '+d.conv_rate+'%':'-'}</small></div><div class="stat"><span>🆕 새 수강권</span><b>${d.new_packages}</b><small>새 수강생 ${d.new_students}</small></div>
+ <div class="stat"><span>💰 매출</span><b style="font-size:24px">${won(d.revenue)}</b><small>지난주 ${won(d.prev_revenue)}</small></div><div class="stat"><span>✅ 출석</span><b>${d.attendance}</b><small>결석 ${d.absent} · 지출 ${won(d.expense)}</small></div></div>
+ <div class="card"><h4>문의 경로</h4>${Object.keys(d.by_source).length?Object.entries(d.by_source).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="list-item row"><div>${esc(k)}</div><div style="flex:3"><div class="bar"><i style="width:${v/d.inquiries*100}%"></i></div></div><b style="flex:none;min-width:24px;text-align:right">${v}</b></div>`).join(''):'<p class="muted">이번 주 문의가 없어요</p>'}</div>
+ <div class="card"><h4>지금 단계별 문의</h4><div class="stage-bar" style="margin:0">${Object.entries(d.pipeline).map(([k,v])=>`<button onclick="LST='${k}';goTab('lead')"><b>${v}</b>${k}</button>`).join('')}</div></div>
+ <div class="card"><h4>7일 안에 연락할 문의</h4>${d.followups.map(l=>`<div class="list-item row" onclick="openLead(${l.id})" style="cursor:pointer"><div><b>${esc(l.name)}</b> <span class="tag ${STG_TAG[l.stage]}">${l.stage}</span><div class="muted">${esc(l.interest||'')}</div></div><span class="tag ${l.next_date<=d.today?'red':''}" style="flex:none">${md(l.next_date)}</span></div>`).join('')||'<p class="muted">예정된 연락이 없어요</p>'}</div>`}
+
+/* ---- products ---- */
+async function rProd(){const d=await A('products');d.deposit=(await A('settings')).deposit_amount;window._PT=d.ptypes;window._PC=d.cats;
+ const cats=[...new Set(d.products.map(p=>p.cat))];
+ $('#av').innerHTML=`<p class="muted" style="margin:0 2px 10px">여기서 바꾼 이름·가격이 홈페이지에 바로 나와요. 가격을 비우면 ‘문의’로 보여요.</p><div class="card"><h4>💵 체험 예약금 (예약 1건당)</h4><div class="row"><input type="number" id="depA" value="${d.deposit}" inputmode="numeric"><button class="btn sm" style="flex:none" onclick="P('settings_save',{deposit_amount:$('#depA').value},'예약금을 바꿨어요').then(()=>{INFO=null;render()})">저장</button></div><p class="muted" style="margin:0">총액에서 빠지고 나머지는 현장 결제. 0원이면 예약금 없음. 새로 들어오는 신청부터 적용돼요.</p></div>
+ <button class="btn" style="margin-bottom:12px" onclick="prodForm()">＋ 상품 추가</button>
+ ${cats.map(c=>`<div class="card"><h4>${esc(c)}</h4>${d.products.filter(p=>p.cat===c).map(p=>`<div class="list-item row" onclick='prodForm(${JSON.stringify(p).replace(/'/g,"&#39;")})' style="cursor:pointer;${p.active?'':'opacity:.45'}"><div><b>${esc(p.name)}</b>${p.active?'':' <span class="tag">숨김</span>'}${p.bookable?' <span class="tag blue">예약</span>':''}<div class="muted">${esc(p.descr||'')}</div></div><b style="flex:none">${priceTxt(p)}</b></div>`).join('')}</div>`).join('')}`}
+function prodForm(p={active:1,cat:'기타'}){CUR=null;sheet(shTop(p.id?'상품 수정':'상품 추가')+`<label>분류</label><select id="prC">${opt(window._PC.map(x=>[x,x]),p.cat)}</select>
+ <label>이름</label><input id="prN" value="${esc(p.name||'')}"><div class="row"><div><label>가격 (비우면 ‘문의’)</label><input type="number" id="prP" value="${p.price??''}" inputmode="numeric"></div><div><label>정렬 순서</label><input type="number" id="prS" value="${p.sort??999}" inputmode="numeric"></div></div>
+ <label>설명</label><input id="prD" value="${esc(p.descr||'')}"><label>연결된 수강권 (정규수업만)</label><select id="prT"><option value="">없음</option>${opt(window._PT.map(x=>[x.key,x.label]),p.ptype)}</select>
+ <label><input type="checkbox" id="prPP" style="width:auto;margin:0 6px 0 0" ${p.per_person?'checked':''}>인당 가격</label>
+ <label><input type="checkbox" id="prB" style="width:auto;margin:0 6px 0 0" ${p.bookable?'checked':''}>홈페이지 예약에서 고를 수 있게</label>
+ <label style="margin-bottom:12px"><input type="checkbox" id="prA" style="width:auto;margin:0 6px 0 0" ${p.active?'':'checked'}>숨기기 (홈페이지에 안 보임)</label>
+ <button class="btn" onclick="P('product_save',{id:${p.id||0}||undefined,cat:$('#prC').value,name:$('#prN').value,price:$('#prP').value,sort:$('#prS').value,descr:$('#prD').value,ptype:$('#prT').value,per_person:$('#prPP').checked,bookable:$('#prB').checked,active:$('#prA').checked?0:1,sessions:${p.sessions||1}},'저장했어요').then(async()=>{INFO=null;META=await A('meta');closeSheet();render()})">저장</button>`)}
+
+/* ---- trials (체험 신청) ---- */
+let TF='wait';
+const trialLine=x=>`${x.conf_time?`<b>${md(x.date)} ${x.conf_time}</b>`:`희망 ${md(x.pref_date)} · ${esc(x.pref_time)}`} · ${x.count}명`;
+const trialTag=x=>`<span class="tag ${x.cancelled?'':x.balance_paid?'green':x.confirmed?(x.deposit_paid?'green':'yel'):'blue'}">${esc(x.status)}</span>`;
+async function rTrial(){const d=await A('trials?f='+TF);
+ $('#av').innerHTML=`<button class="btn" style="margin-bottom:10px" onclick="trialForm()">＋ 체험 신청 입력 (전화로 받았을 때)</button>
+ <div class="stage-bar" style="grid-template-columns:repeat(4,1fr)">${[['wait','확정 대기'],['up','예정'],['past','지난 체험'],['cancel','취소']].map(([k,l])=>`<button class="${TF===k?'on':''}" onclick="TF='${k}';render()"><b>${d.counts[k]}</b>${l}</button>`).join('')}</div>
+ ${d.items.map(x=>`<div class="lead" onclick="openTrial(${x.id})"><div class="top2"><b style="font-size:16px">${esc(x.name)}</b>${trialTag(x)}${x.source?`<span class="tag">${esc(x.source)}</span>`:''}</div>
+  <div class="muted">${trialLine(x)}</div><div class="muted">${esc(x.product||'수업 미정')}${x.total!=null?' · 총 '+won(x.total):''}</div><div class="muted">${telA(x.phone)}</div></div>`).join('')||`<p class="empty">${TF==='wait'?'확정 대기 중인 체험 신청이 없어요 👍':'없어요'}</p>`}`}
+async function openTrial(id){CUR=()=>openTrial(id);const x=await A('trial?id='+id);const dep=+x.deposit_amount||0;
+ const prefs=(INFO&&INFO.time_prefs)||{};const rng=(INFO&&INFO.open_range||{})[String((pd(x.date).getDay()+6)%7)];
+ sheet(shTop(esc(x.name))+`<div class="muted" style="margin:-6px 0 10px">${trialTag(x)} ${x.source?`<span class="tag">${esc(x.source)}</span>`:''}<br>${telA(x.phone)} · ${x.count}명${x.age?' · '+esc(x.age):''}<br>🛹 ${esc(x.product||'수업 미정')}${x.total!=null?` · 총 <b>${won(x.total)}</b>`:''}<br>🗓 희망: ${md(x.pref_date)} · ${esc(x.pref_time)}${x.message?`<br>💬 ${esc(x.message)}`:''}</div>
+ ${x.phone?`<div class="bigbtns"><a class="btn dark" href="tel:${esc(x.phone.replace(/[^0-9]/g,''))}">📞 전화</a>${x.lead_id?`<button class="btn gray" onclick="openLead(${x.lead_id})">📥 문의 기록</button>`:'<span></span>'}</div>`:''}
+ <div class="card"><h4>① 시간 확정 ${x.confirmed?`<span class="tag green">${md(x.date)} ${esc(x.conf_time||'')}</span>`:''}</h4><p class="muted" style="margin:0 0 8px">통화로 정한 날짜와 시간을 넣어 주세요.${rng?` 운영시간 ${rng[0]}~${rng[1]}`:''}</p>
+  <div class="row"><input type="date" id="tcD" value="${x.conf_date||x.pref_date}"><input type="time" id="tcT" value="${x.conf_time||''}" step="600"></div>
+  <label style="margin-top:-6px"><input type="checkbox" id="tcF" style="width:auto;margin:0 6px 0 0">운영시간 밖 허용</label>
+  <button class="btn" style="margin-top:8px" onclick="if(!$('#tcT').value)return toast('시간을 입력해 주세요',1);P('trial_update',{id:${x.id},conf_date:$('#tcD').value,conf_time:$('#tcT').value,force:$('#tcF').checked},'시간을 확정했어요').then(refresh)">${x.confirmed?'확정 시간 바꾸기':'시간 확정'}</button></div>
+ <div class="card"><h4>② 예약금 ${won(dep)}</h4>${dep?`<p class="muted" style="margin:0 0 8px">확정 통화 때 예약금을 안내하고, 들어오면 입금 확인을 눌러 주세요. 장부에 예약금으로 기록돼요.</p>
+  <button class="btn ${x.deposit_paid?'green':'gray'}" onclick="P('trial_update',{id:${x.id},deposit_paid:${x.deposit_paid?0:1}},'${x.deposit_paid?'입금 확인을 취소했어요':'예약금 입금 확인 ✓'}').then(refresh)">${x.deposit_paid?'✓ 예약금 입금 확인됨 (누르면 취소)':'예약금 입금 확인'}</button>`:'<p class="muted" style="margin:0">예약금 없는 예약이에요.</p>'}
+  <div class="row" style="margin-top:8px"><input type="number" id="tdA" value="${dep}" inputmode="numeric"><button class="btn sm gray" style="flex:none" onclick="P('trial_update',{id:${x.id},deposit_amount:$('#tdA').value},'이 예약의 예약금을 바꿨어요').then(refresh)">금액 변경</button></div></div>
+ <div class="card"><h4>③ 체험 당일</h4><div class="bigbtns"><button class="btn ${x.attended?'green':'gray'}" onclick="P('trial_update',{id:${x.id},attended:${x.attended?0:1}}).then(refresh)">${x.attended?'✓ 체험 완료':'체험 완료'}</button>
+  ${x.balance_paid?`<button class="btn green" onclick="if(confirm('잔금 결제 기록을 취소할까요? 장부에서도 빠져요.'))P('trial_update',{id:${x.id},paid:0},'취소했어요').then(refresh)">✓ 잔금 ${won(x.paid_amount)}</button>`:`<button class="btn gray" onclick="trialPayForm(${x.id},${x.balance_due??0})">잔금 결제</button>`}</div>
+  <p class="muted" style="margin:0">${x.total!=null?`총 ${won(x.total)}${x.deposit_paid?` − 예약금 ${won(dep)}`:''} = 현장 결제 <b>${won(x.balance_due)}</b>`:'상품 미정: 받은 금액을 직접 입력해 주세요.'}</p></div>
+ <div class="card"><h4>메모</h4><div class="row"><input id="tmM" value="${esc(x.memo||'')}" placeholder="예: 보호자 동반"><button class="btn sm gray" style="flex:none" onclick="P('trial_update',{id:${x.id},memo:$('#tmM').value},'저장했어요').then(refresh)">저장</button></div></div>
+ <button class="btn ghost" style="color:${x.cancelled?'#6fe3a5':'#ff8a90'}" onclick="if(confirm('${x.cancelled?'신청을 복구할까요?':'이 체험 신청을 취소할까요?'}'))P('trial_update',{id:${x.id},cancelled:${x.cancelled?0:1}},'${x.cancelled?'복구했어요':'취소했어요'}').then(refresh)">${x.cancelled?'신청 복구':'신청 취소'}</button>`)}
+function trialPayForm(id,due){sheet(shTop('잔금 결제')+`<p class="muted" style="margin-top:0">현장에서 받은 금액(예약금 제외)을 넣어 주세요. 장부에 자동 기록돼요.</p>
+ <label>받은 금액</label><input type="number" id="tpA" value="${due||''}" inputmode="numeric"><label>결제 방법</label><select id="tpM"><option value="">-</option>${opt(META.pay_methods.map(x=>[x,x]))}</select>
+ <button class="btn" onclick="if(!(+$('#tpA').value>0))return toast('금액을 입력해 주세요',1);P('trial_update',{id:${id},paid:1,amount:$('#tpA').value,pay_method:$('#tpM').value},'잔금을 기록했어요').then(()=>openTrial(${id})).then(()=>render())">저장</button><button class="btn ghost" style="margin-top:8px" onclick="openTrial(${id})">← 돌아가기</button>`)}
+function trialForm(){CUR=null;const bk=META.products.filter(p=>p.bookable);sheet(shTop('체험 신청 입력')+`<div class="row"><div><label>이름</label><input id="taN"></div><div><label>연락처</label><input id="taP" inputmode="tel" placeholder="010-0000-0000"></div></div>
+ <label>수업</label><select id="taPr">${opt(bk.map(p=>[p.id,p.name]))}<option value="">미정</option></select>
+ <div class="row"><div><label>인원</label><input type="number" id="taC" value="1" inputmode="numeric"></div><div><label>나이</label><input id="taAg" placeholder="9살 / 성인"></div></div>
+ <div class="row"><div><label>희망 날짜</label><input type="date" id="taD" value="${addDays(today0(),1)}"></div><div><label>희망 시간대</label><input id="taT" placeholder="예: 오후"></div></div>
+ <label>어디서 왔나요?</label><select id="taS">${opt(META.sources.map(x=>[x,x]),'전화')}</select>
+ <button class="btn" onclick="P('trial_add',{name:$('#taN').value,phone:$('#taP').value,product_id:$('#taPr').value||null,count:$('#taC').value,age:$('#taAg').value,date:$('#taD').value,time_pref:$('#taT').value,source:$('#taS').value},'체험 신청을 넣었어요').then(r=>{render();openTrial(r.id)})">저장</button>`)}
+
 /* ---- chat ---- */
-const CH=['수업 시간','주말반','가격','예약금','위치','주차','스노보드','예약하기'];
+const CH=['운영 시간','가격','장비','나이','위치','주차','스노보드 강습','단체 수업','예약하기'];
 $('.chips').innerHTML=CH.map(c=>`<button onclick="ask('${c}')">${c}</button>`).join('');
 function add(t,c){const m=document.createElement('div');m.className='m '+c;m.textContent=t;$('#msgs').append(m);$('#msgs').scrollTop=1e9;return m}
-function openChat(){$('#chat').classList.add('on');if(!$('#msgs').children.length)add('안녕하세요! 원스타스케이트파크 AI 상담이에요 🛹\n수업 시간, 가격, 위치, 예약을 물어보세요.','b')}
+function openChat(){$('#chat').classList.add('on');if(!$('#msgs').children.length)add('안녕하세요! 원스타스케이트 상담이에요 🛹\n운영 시간, 가격, 위치, 예약을 물어보세요.','b')}
 function closeChat(){$('#chat').classList.remove('on')}
 async function ask(t){add(t,'u');const w=add('…','b');const {ok,d}=await api('/api/chat',{method:'POST',body:JSON.stringify({message:t})});w.textContent=ok?d.reply:(d.error||'잠시 후 다시 시도해 주세요.');
  if(ok&&/예약/.test(t+d.reply)){const b=document.createElement('a');b.className='btn sm';b.style.marginTop='8px';b.textContent='📅 예약하러 가기';b.href='#book';b.onclick=closeChat;w.append(document.createElement('br'),b)}}
