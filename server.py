@@ -28,11 +28,8 @@ TRIAL_NOTE = "강습료·입장료·장비 대여 포함"
 SNOW_DESC = "지산리조트에서 진행 · 원하는 리조트로 출장 가능 · 일정과 수강료는 문의 주세요"
 DEFAULT_PRODUCTS = [
     ("trial_13_40", "체험수업", "체험수업 1:3 · 40분", 40000, 1, "", 1, TRIAL_NOTE, 1),
-    ("trial_13_60", "체험수업", "체험수업 1:3 · 1시간", 50000, 1, "", 1, TRIAL_NOTE, 1),
     ("trial_12_40", "체험수업", "체험수업 1:2 · 40분", 50000, 1, "", 1, TRIAL_NOTE, 1),
-    ("trial_12_60", "체험수업", "체험수업 1:2 · 1시간", 70000, 1, "", 1, TRIAL_NOTE, 1),
     ("trial_11_30", "체험수업", "체험수업 1:1 · 30분", 60000, 1, "", 1, TRIAL_NOTE, 1),
-    ("trial_11_60", "체험수업", "체험수업 1:1 · 1시간", 90000, 1, "", 1, TRIAL_NOTE, 1),
     ("reg_wd_kids", "정규수업", "정규 주중 키즈 (주1회 · 총4회)", 200000, 0, "wd_kids", 4, "장비 포함", 0),
     ("reg_wd_adult", "정규수업", "정규 주중 성인 (주1회 · 총4회)", 300000, 0, "wd_adult", 4, "장비 포함", 0),
     ("reg_we_kids", "정규수업", "정규 주말 키즈 (주1회 · 총4회)", 250000, 0, "we_kids", 4, "장비 포함", 0),
@@ -40,6 +37,7 @@ DEFAULT_PRODUCTS = [
     ("snow", "시즌·단체", "겨울철 스노보드 강습", None, 0, "", 1, SNOW_DESC, 0),
     ("group", "시즌·단체", "단체 스케이트보드 수업", None, 0, "", 1, "인원·일정에 맞춰 안내해 드려요. 문의 주세요", 0),
 ]
+RETIRED_PRODUCTS = ("trial_13_60", "trial_12_60", "trial_11_60")  # 판매 중단(1시간 체험)
 PRODUCT_CATS = ["체험수업", "정규수업", "시즌·단체", "용품", "기타"]
 STAGES = ["신규문의", "체험예약", "체험완료", "정규등록", "보류"]
 STAGE_AT = {"체험예약": "trial_at", "체험완료": "done_at", "정규등록": "reg_at", "보류": "hold_at"}
@@ -188,6 +186,10 @@ def init():
         c.execute("UPDATE products SET descr=?, updated=? WHERE code='snow' AND (descr IS NULL OR descr='' OR descr=?)",
                   (SNOW_DESC, now(), "일정과 수강료는 문의 주세요"))
         c.execute("INSERT OR IGNORE INTO settings(k,v) VALUES('mig_snow_desc','1')")
+    # 1시간 체험(1:3·1:2·1:1) 판매 중단(2026-10 사장님 요청). 상품 행·기존 신청/결제 기록은 그대로 두고 숨김만. 한 번만.
+    if not c.execute("SELECT k FROM settings WHERE k='mig_no_trial_60'").fetchone():
+        c.execute("UPDATE products SET active=0, bookable=0, updated=? WHERE code IN (?,?,?)", (now(),) + RETIRED_PRODUCTS)
+        c.execute("INSERT OR IGNORE INTO settings(k,v) VALUES('mig_no_trial_60','1')")
     # v3 수강권 결제 -> 장부 이관(한 번만: 연결된 결제 기록이 없는 경우만)
     for p in c.execute("""SELECT p.* FROM packages p WHERE COALESCE(p.paid_amount,0)>0 AND p.pay_status<>'미납'
                           AND NOT EXISTS (SELECT 1 FROM payments y WHERE y.source='package' AND y.ref_id=p.id)""").fetchall():
@@ -1132,8 +1134,8 @@ def admin_action(c, act, d):
     raise NotFound()
 
 # ---------- FAQ 자동응답 ----------
-PRICE_TXT = ("[체험수업] 인당 가격 · 강습료·입장료·장비 대여 포함\n• 1:3 40분 인당 4만원 / 1시간 인당 5만원\n• 1:2 40분 인당 5만원 / 1시간 인당 7만원\n"
-             "• 1:1 30분 6만원 / 1시간 9만원\n[정규수업] 주 1회 · 총 4회\n• 주중 키즈 20만원 · 주중 성인 30만원\n• 주말 키즈 25만원 · 주말 성인 35만원\n"
+PRICE_TXT = ("[체험수업] 인당 가격 · 강습료·입장료·장비 대여 포함\n• 1:3 40분 인당 4만원\n• 1:2 40분 인당 5만원\n"
+             "• 1:1 30분 6만원\n[정규수업] 주 1회 · 총 4회\n• 주중 키즈 20만원 · 주중 성인 30만원\n• 주말 키즈 25만원 · 주말 성인 35만원\n"
              "겨울철 스노보드 강습·단체 수업은 문의해 주세요.")
 HOURS_TXT = "운영 시간: 화~금 13:00~21:00, 토 10:00~18:00, 일 10:00~16:00 (매주 월요일 정기휴무)"
 FAQ = [

@@ -10,7 +10,7 @@ import server as S
 S.init(); c = S.db(); A = lambda act, d: S.admin_action(c, act, d)
 T = datetime.date.fromisoformat(S.today()); D = lambda n: (T + datetime.timedelta(days=n)).isoformat()
 prod = {r["code"]: r["id"] for r in c.execute("SELECT id, code FROM products").fetchall()}
-leads = [("박서연 (예시)", "010-0000-1001", "네이버", "trial_12_60", "신규문의", None, "주말 오후 체험 문의"),
+leads = [("박서연 (예시)", "010-0000-1001", "네이버", "trial_12_40", "신규문의", None, "주말 오후 체험 문의"),
          ("이도윤 (예시)", "010-0000-1002", "인스타", "trial_13_40", "신규문의", D(0), "친구 3명 같이"),
          ("최하은 (예시)", "010-0000-1003", "전화", "group", "체험예약", D(2), "초등 단체 15명"),
          ("정우진 (예시)", "010-0000-1004", "소개", "trial_11_30", "체험완료", D(0), "성인, 정규 고민 중"),
@@ -35,7 +35,7 @@ def nxt(n):
     while d.weekday() == 0: d += datetime.timedelta(days=1)
     return d.isoformat()
 t1 = S.create_trial(c, {"name": "오시우 (예시)", "phone": "010-0000-1006", "date": nxt(1), "time_pref": "오후 (13~17시) / 3시 이후", "count": 2, "age": "10살", "product_id": prod["trial_12_40"], "source": "네이버"})
-t2 = S.create_trial(c, {"name": "서지후 (예시)", "phone": "010-0000-1007", "date": nxt(2), "time_pref": "저녁 (17~21시)", "count": 3, "age": "성인", "product_id": prod["trial_13_60"], "source": "인스타"})
+t2 = S.create_trial(c, {"name": "서지후 (예시)", "phone": "010-0000-1007", "date": nxt(2), "time_pref": "저녁 (17~21시)", "count": 3, "age": "성인", "product_id": prod["trial_13_40"], "source": "인스타"})
 A("trial_update", {"id": t2["id"], "conf_date": nxt(2), "conf_time": "18:00"})
 t3 = S.create_trial(c, {"name": "문예린 (예시)", "phone": "010-0000-1008", "date": nxt(3), "time_pref": "상관없음", "count": 1, "age": "8살", "product_id": prod["trial_11_30"], "source": "구글"})
 A("trial_update", {"id": t3["id"], "conf_date": nxt(3), "conf_time": "14:00"}); A("trial_update", {"id": t3["id"], "deposit_paid": 1})
